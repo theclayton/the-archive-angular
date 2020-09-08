@@ -1,0 +1,14 @@
+.white {
+    color: white;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu-spacer {
+    flex: 1 1 auto;
+}

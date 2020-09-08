@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    <ul>
+        <li>
+            <a mat-button routerLink="/" routerLinkActive="mat-accent" *ngIf="userIsAuthenticated">
+                <mat-icon>home</mat-icon>
+            </a>
+        </li>
+        <li>
+            <a mat-button routerLink="/projects" routerLinkActive="mat-accent" *ngIf="userIsAuthenticated">Projects</a>
+        </li>
+    </ul>
+
+    <span class="menu-spacer"></span>
+
+    <ul>
+        <li>
+            <a mat-button routerLink="/admin" routerLinkActive="mat-accent" *ngIf="userIsAdmin">Admin            </a>
+        </li>
+    </ul>
+
+    <button mat-button [matMenuTriggerFor]="accountMenu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #accountMenu="matMenu">
+        <button mat-menu-item routerLink="/my-account">My Account</button>
+        <button mat-menu-item (click)="onLogout()">Log Out</button>
+    </mat-menu>
+
+</mat-toolbar>

@@ -1,0 +1,39 @@
+<a mat-button color="primary" href="https://resume.flaresoftware.com/" target="_blank">Resume</a>
+<button mat-button color="primary" (click)="onPrivacyPolicy()">Privacy Policy</button>
+<a mat-button color="primary" href="https://github.com/theclayton" target="_blank">Source Code</a>
+
+<div class="loginWrapper">
+
+    <div class="loginSection">
+        <mat-card>
+            <h1 mat-dialog-title>{{ formTitle }}</h1>
+            <form [formGroup]="loginForm">
+
+                <mat-form-field>
+                    <input matInput formControlName="email" type="text" placeholder="email@example.com">
+                    <span *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched" class="helpBlock">Please enter a valid email.</span>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput formControlName="password" type="password" placeholder="password">
+                    <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched" class="helpBlock">Please enter a password.</span>
+                </mat-form-field>
+
+
+                <button mat-raised-button class="white" color="primary" [disabled]="isLoading" (click)="onLogin()"><mat-spinner *ngIf="isLoading" diameter="20" class="seashell-spinner"></mat-spinner>Login</button>
+                <button mat-button color="primary" (click)="onCreateAccount()">Create an account</button>
+                <p *ngIf="loginError" class="helpBlock">{{ loginErrorText }}</p>
+            </form>
+        </mat-card>
+    </div>
+</div>
+
+
+<div class="infoSection seashell">
+    <h2>Guests welcome!</h2>
+    <p>I implemented authentication to practice my skills and demonstrate my ability to create an authenticated web app. Feel free to use the guest account for limited access, or create an account for Subscriber access.</p>
+    <hr>
+    <p class="textOffset">Guest login:</p>
+    <p class="textOffset">email: <strong>guest@flaresoftware.com</strong></p>
+    <p class="textOffset">password: <strong>guest1234</strong></p>
+</div>
