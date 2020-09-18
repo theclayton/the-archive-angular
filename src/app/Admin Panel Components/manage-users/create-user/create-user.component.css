@@ -1,0 +1,47 @@
+.cUserPage {
+    background-color: #fff5ee;
+}
+
+.cUserWrapper {
+    margin: auto;
+    width: 100%;
+}
+
+.white {
+    color: white;
+}
+
+.seashell {
+    color: #fff5ee;
+}
+
+.helpBlock {
+    font-size: 10pt;
+    color: #f40000;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.textOffset {
+    text-indent: 25px;
+}
+
+.cUserSection {
+    height: 200%;
+}
+
+.cUserSection mat-spinner {
+    display: inline-block;
+    margin-right: 9px;
+    margin-left: -4px;
+}
+
+.auth-section {
+    padding: 5px 10px 25px 10px;
+}
+
+ :host ::ng-deep .seashell-spinner circle {
+    stroke: #fff5ee;
+}

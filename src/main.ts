@@ -10,3 +10,6 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+// Set environment variables:
+// set CRYPTO_KEY=asdf

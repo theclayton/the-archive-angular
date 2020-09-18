@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<div class="pageWrapper">
+    <h1>Admin Panel</h1>
+
+    <mat-accordion>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Feature Page Editor
+                </mat-panel-title>
+                <mat-panel-description>
+                    Modify what gets displayed on the Featured home page.
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-feature-page-editor></app-feature-page-editor>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Manage Projects
+                </mat-panel-title>
+                <mat-panel-description>
+                    View, create, edit or delete projects in The Archive.
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-manage-projects></app-manage-projects>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Manage Users
+                </mat-panel-title>
+                <mat-panel-description>
+                    View, create, delete, or modify users.
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-manage-users></app-manage-users>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+</div>
+<!-- end pageWrapper -->

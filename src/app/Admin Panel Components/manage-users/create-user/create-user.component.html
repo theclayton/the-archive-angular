@@ -1,0 +1,35 @@
+<div class="cUserWrapper">
+
+    <div class="cUserSection">
+        <mat-card>
+            <h1 mat-dialog-title>{{ cUserFormTitle }}</h1>
+            <form [formGroup]="cUserForm">
+
+                <mat-form-field>
+                    <input matInput formControlName="name" type="text" placeholder="Name of User">
+                    <span *ngIf="!cUserForm.get('name').valid && cUserForm.get('name').touched" class="helpBlock">Please enter a name.</span>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput formControlName="email" type="text" placeholder="email@example.com">
+                    <span *ngIf="!cUserForm.get('email').valid && cUserForm.get('email').touched" class="helpBlock">Please enter a valid email.</span>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput formControlName="password" type="password" placeholder="password">
+                    <span *ngIf="!cUserForm.get('password').valid && cUserForm.get('password').touched" class="helpBlock">Please enter a password.</span>
+                </mat-form-field>
+
+
+                <section class="auth-section">
+                    <mat-checkbox [checked]='newUserIsAdmin' color='primary' (change)="checkboxChanged()">
+                        Is Admin
+                    </mat-checkbox>
+                </section>
+
+
+                <button mat-raised-button class="white" color="primary" [disabled]="isLoading" (click)="onCreateUser()"><mat-spinner *ngIf="isLoading" diameter="20" class="seashell-spinner"></mat-spinner>Create</button>
+            </form>
+        </mat-card>
+    </div>
+</div>

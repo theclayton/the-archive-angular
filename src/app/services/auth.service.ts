@@ -118,6 +118,9 @@ export class AuthService {
     const token = localStorage.getItem('token')
     const expirationDate = localStorage.getItem('expiration')
 
+    // TODO: Decrypt items and then return
+    // CRYPTO_KEY
+
     if (!token || token == "invalid") return;
 
     return {
@@ -127,6 +130,9 @@ export class AuthService {
   }
 
   private saveLoginDataToLocalStorage() {
+    // TODO: Encrypt data before saving to local storage
+    // CRYPTO_KEY
+
     localStorage.setItem('token', this.token)
     localStorage.setItem('expiration', this.expirationDate.toISOString())
   }

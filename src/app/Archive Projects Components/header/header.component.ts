@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,22 +13,32 @@ export class HeaderComponent implements OnInit {
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
-    this.userIsAuthenticated = this.authService.isAuth()
-    this.checkIfUserIsAdmin()
+    this.checkAuthentication()
   }
 
-  async checkIfUserIsAdmin() {
+  checkAuthentication() {
     try {
-      const authLevel = await this.authService.getUserAuthLevel()
+      this.userIsAuthenticated = this.authService.isAuth()
+      this.checkIfUserIsAdmin()
+    } catch {
+      this.userIsAuthenticated = false;
+      this.userIsAdmin = false;
+    }
 
-      console.log(authLevel)
+  }
+
+  checkIfUserIsAdmin() {
+    try {
+      let authLevel = this.authService.getUserAuthLevel()
+
       if (authLevel === "admin") {
         this.userIsAdmin = true
       }
     } catch (ex) {
+      this.userIsAdmin = false
     }
   }
-  
+
   onLogout() {
     this.userIsAuthenticated = false
     this.userIsAdmin = false

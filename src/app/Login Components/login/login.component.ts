@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +10,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private authStatusSub: Subscription
   formTitle: String = "Login"
   loginForm: FormGroup;
   isLoading: Boolean = false

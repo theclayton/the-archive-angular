@@ -13,25 +13,39 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
-import { CreateUserComponent } from './create-user/create-user.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { TechnologiesBarComponent } from './technologies-bar/technologies-bar.component';
-import { MyAccountComponent } from './my-account/my-account.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AuthInterceptor } from './auth-interceptor';
-import { ProjectsComponent } from './projects/projects.component';
-import { CreateAccountComponent } from './create-account/create-account.component';
+
+import { LoginComponent } from './Login Components/login/login.component';
+import { MyAccountComponent } from './Login Components/my-account/my-account.component';
+import { CreateAccountComponent } from './Login Components/create-account/create-account.component';
+
+import { AdminPanelComponent } from './Admin Panel Components/admin-panel/admin-panel.component';
+import { FeaturePageEditorComponent } from './Admin Panel Components/feature-page-editor/feature-page-editor.component';
+import { ManageProjectsComponent } from './Admin Panel Components/manage-projects/manage-projects.component';
+import { ManageUsersComponent } from './Admin Panel Components/manage-users/manage-users.component';
+
+import { HomeComponent } from './Archive Projects Components/home/home.component';
+import { HeaderComponent } from './Archive Projects Components/header/header.component';
+import { SearchBarComponent } from './Archive Projects Components/search-bar/search-bar.component';
+import { TechnologiesBarComponent } from './Archive Projects Components/technologies-bar/technologies-bar.component';
+import { ProjectsComponent } from './Archive Projects Components/projects/projects.component';
+import { CreateUserComponent } from './Admin Panel Components/manage-users/create-user/create-user.component';
+import { UserListComponent } from './Admin Panel Components/manage-users/user-list/user-list.component';
+import { ProjectListComponent } from './Admin Panel Components/manage-projects/project-list/project-list.component';
+import { SidePanelComponent } from './Archive Projects Components/side-panel/side-panel.component';
+import { ProjectPreviewComponent } from './Archive Projects Components/projects/project-preview/project-preview.component';
+import { ProjectComponent } from './Archive Projects Components/projects/project/project.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CreateUserComponent,
     HomeComponent,
     HeaderComponent,
     SearchBarComponent,
@@ -39,7 +53,16 @@ import { CreateAccountComponent } from './create-account/create-account.componen
     MyAccountComponent,
     AdminPanelComponent,
     ProjectsComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    FeaturePageEditorComponent,
+    ManageProjectsComponent,
+    ManageUsersComponent,
+    CreateUserComponent,
+    UserListComponent,
+    ProjectListComponent,
+    SidePanelComponent,
+    ProjectPreviewComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +78,11 @@ import { CreateAccountComponent } from './create-account/create-account.componen
     MatProgressSpinnerModule,
     MatMenuModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule,
+    MatTableModule,
+    MatCheckboxModule,
+    FlexLayoutModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,}],
   bootstrap: [AppComponent]

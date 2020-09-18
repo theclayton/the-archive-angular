@@ -1,0 +1,52 @@
+<div class="pageContainer">
+    <mat-card>
+        <table mat-table [dataSource]="data" class="mat-elevation-z0">
+
+            <ng-container matColumnDef="number">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h3>No.</h3>
+                </th>
+                <td mat-cell *matCellDef="let element"><b> {{element.number}} </b></td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h3>Name</h3>
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h3>Email</h3>
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h3>Actions</h3>
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button color="primary" aria-label="delete icon">
+                     <mat-icon>edit</mat-icon>
+                   </button>
+
+                    <button mat-icon-button color="primary" aria-label="delete icon">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+            </ng-container>
+
+
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row (click)="openDoc(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+    </mat-card>
+</div>
