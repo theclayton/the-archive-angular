@@ -1,0 +1,55 @@
+.container {
+  margin: 0px;
+  padding: 0px;
+  width: 275px;
+  height: 100px;
+  display: flex;
+  background-color: #222222;
+  border: 1px solid #333333;
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.image img {
+  border: solid 1px #111111;
+  border-radius: 50%;
+  margin: 20px 12px;
+}
+
+.details {
+  text-align: left;
+  color: #dedede;
+  padding-top: 15px;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+  width: 180px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.projTitle {
+  font-size: 10pt;
+  padding-bottom: 1px;
+}
+
+.date {
+  font-size: 7pt;
+  padding-bottom: 6px;
+}
+
+.projSubtitle {
+  font-size: 8pt;
+  padding-top: 6px;
+}
+
+.detailsImages {
+  display: flex;
+}
+
+.details img {
+  margin-right: 5px;
+}

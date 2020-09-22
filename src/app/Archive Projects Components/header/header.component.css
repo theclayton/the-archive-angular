@@ -9,6 +9,10 @@ ul {
     display: flex;
 }
 
+a {
+    font-size: 12pt;
+}
+
 .menu-spacer {
     flex: 1 1 auto;
 }

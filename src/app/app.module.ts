@@ -40,6 +40,7 @@ import { ProjectListComponent } from './Admin Panel Components/manage-projects/p
 import { SidePanelComponent } from './Archive Projects Components/side-panel/side-panel.component';
 import { ProjectPreviewComponent } from './Archive Projects Components/projects/project-preview/project-preview.component';
 import { ProjectComponent } from './Archive Projects Components/projects/project/project.component';
+import { SidePanelProjectComponent } from './Archive Projects Components/side-panel/side-panel-project/side-panel-project.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { ProjectComponent } from './Archive Projects Components/projects/project
     ProjectListComponent,
     SidePanelComponent,
     ProjectPreviewComponent,
-    ProjectComponent
+    ProjectComponent,
+    SidePanelProjectComponent
   ],
   imports: [
     BrowserModule,
