@@ -1,0 +1,18 @@
+.container {
+    height: 100vh;
+    background-color: #fff5ee;
+    display: flex;
+    flex-direction: column;
+}
+
+.flexContainer {
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.mainContent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}

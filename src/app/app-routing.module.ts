@@ -11,13 +11,12 @@ import { AdminPanelComponent } from './Admin Panel Components/admin-panel/admin-
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  // { path: '', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: '', component: ProjectsComponent, canActivate: [AuthGuard]},
+  { path: '', component: HomeComponent, canActivate: [AuthGuard]},
+  { path: 'featured', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard]},
   { path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuard]},
 
   { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard]},
-
 ];
 
 @NgModule({

@@ -1,2 +1,14 @@
-<app-header></app-header>
-<p>home</p>
+<div class="container">
+    <app-header></app-header>
+
+    <div class="flexContainer">
+        <app-side-panel></app-side-panel>
+
+        <div class="mainContent">
+            <app-search-bar></app-search-bar>
+            <app-technologies-bar></app-technologies-bar>
+
+            <app-project-preview *ngFor="let project of featuredProjects" [project]="project"></app-project-preview>
+        </div>
+    </div>
+</div>

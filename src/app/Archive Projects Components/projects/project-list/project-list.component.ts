@@ -7,20 +7,42 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./project-list.component.css']
 })
 export class ProjectListComponent implements OnInit {
+
+  // TODO: GET ALL PROJECTS Newest to Oldest
   data = [
     { number: '1', title: 'Project One', subtitle: 'The coolest app ever', category: 'Mobile', dateCreated: '12/05/2000' },
     { number: '2', title: 'Project Two', subtitle: 'The second coolest app ever', category: 'Mobile', dateCreated: '01/15/2007' },
   ];
 
-  displayedColumns: string[] = [ 'number', 'title', 'subtitle', 'category', 'dateCreated', 'actions' ];
+
+  userIsAdmin = false;
+
+  displayedColumns: string[] = [ 'number', 'title', 'subtitle', 'category', 'dateCreated'];
 
 
-  constructor(public authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.checkIfUserIsAdmin()
+
+    if (this.userIsAdmin) {
+      this.displayedColumns.push('actions')
+    }
   }
 
-  openProject(thisProj) {
+  checkIfUserIsAdmin() {
+    try {
+      let user = this.authService.getUser()
+
+      if (user.authLevel === "admin") {
+        this.userIsAdmin = true
+      }
+    } catch (ex) {
+      this.userIsAdmin = false
+    }
+  }
+
+  onSelectProject(thisProj) {
     console.log(thisProj)
     // let url: string = "../assets/docs/" + thisProj.resource
     // window.open(url, '_blank');

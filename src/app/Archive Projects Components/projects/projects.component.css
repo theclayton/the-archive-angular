@@ -1,35 +1,13 @@
 .container {
-  height: 100vh;
-  width: 100vw;
-  background-color: plum;
-  display: flex;
-  flex-direction: column;
+    height: 100vh;
+    background-color: #fff5ee;
 }
 
-app-header {
+.content {
+    width: 90%;
+    margin: 0 auto;
 }
 
-.flexContainer {
-  height: 100%;
-  display: flex;
-  align-items: stretch;
-}
-
-.mainContent {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-app-side-panel {
-  flex: 0 275px;
-  background-color: #212121;
-}
-
-app-search-bar {
-  background-color: yellow;
-}
-app-technologies-bar {
-  width: 100%;
-  background-color: red;
+h1 {
+    text-align: center;
 }

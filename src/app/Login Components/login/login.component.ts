@@ -9,12 +9,14 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   formTitle: String = "Login"
   loginForm: FormGroup;
   isLoading: Boolean = false
   loginError: Boolean = false
   loginErrorText: string = "Error logging in. Please check you login information."
+
   constructor(public authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {

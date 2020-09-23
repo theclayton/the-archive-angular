@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable, Output } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
@@ -10,9 +10,9 @@ const BACKEND_URL = environment.apiUrl + "/auth/login"
 @Injectable({ providedIn: "root" })
 
 export class AuthService {
-  private isAuthenticated = false;
+  private isAuthenticated;
   private token: string = "invalid";
-  private user: User = { name: "", authLevel: "" }
+  private user: User = { name: "", email: "", authLevel: "" }
   private tokenTimer: any
   private logoutWarningTimer: any
   private expirationDate = new Date()
@@ -21,11 +21,10 @@ export class AuthService {
 
   isAuth() {
     if (this.isAuthenticated) {
-      return true
+      return this.isAuthenticated
     } else {
       if (this.loadLocalStoragelogin()) {
-        this.getUserInfo()
-        return true
+        return this.getUserInfo()
       } else {
         return false
       }
@@ -36,12 +35,8 @@ export class AuthService {
     return this.token
   }
 
-  getUserName() {
-    return this.user.name;
-  }
-
-  getUserAuthLevel() {
-    return this.user.authLevel;
+  getUser() {
+    return this.user;
   }
 
   async login(email: string, password: string) {

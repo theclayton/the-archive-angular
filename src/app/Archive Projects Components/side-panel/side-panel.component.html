@@ -1,1 +1,5 @@
-<app-side-panel-project></app-side-panel-project>
+<div class="container">
+    <h4>Recent Projects:</h4>
+    <app-side-panel-project *ngFor="let project of projects" [project]="project">
+    </app-side-panel-project>
+</div>

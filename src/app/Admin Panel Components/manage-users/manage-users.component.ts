@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ManageUsersComponent implements OnInit {
 
-  constructor(public authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 

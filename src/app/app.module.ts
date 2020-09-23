@@ -28,19 +28,20 @@ import { AdminPanelComponent } from './Admin Panel Components/admin-panel/admin-
 import { FeaturePageEditorComponent } from './Admin Panel Components/feature-page-editor/feature-page-editor.component';
 import { ManageProjectsComponent } from './Admin Panel Components/manage-projects/manage-projects.component';
 import { ManageUsersComponent } from './Admin Panel Components/manage-users/manage-users.component';
+import { CreateUserComponent } from './Admin Panel Components/manage-users/create-user/create-user.component';
+import { UserListComponent } from './Admin Panel Components/manage-users/user-list/user-list.component';
 
 import { HomeComponent } from './Archive Projects Components/home/home.component';
 import { HeaderComponent } from './Archive Projects Components/header/header.component';
 import { SearchBarComponent } from './Archive Projects Components/search-bar/search-bar.component';
 import { TechnologiesBarComponent } from './Archive Projects Components/technologies-bar/technologies-bar.component';
 import { ProjectsComponent } from './Archive Projects Components/projects/projects.component';
-import { CreateUserComponent } from './Admin Panel Components/manage-users/create-user/create-user.component';
-import { UserListComponent } from './Admin Panel Components/manage-users/user-list/user-list.component';
-import { ProjectListComponent } from './Admin Panel Components/manage-projects/project-list/project-list.component';
 import { SidePanelComponent } from './Archive Projects Components/side-panel/side-panel.component';
 import { ProjectPreviewComponent } from './Archive Projects Components/projects/project-preview/project-preview.component';
-import { ProjectComponent } from './Archive Projects Components/projects/project/project.component';
 import { SidePanelProjectComponent } from './Archive Projects Components/side-panel/side-panel-project/side-panel-project.component';
+import { ProjectViewComponent } from './Archive Projects Components/projects/project-view/project-view.component';
+import { ProjectListComponent } from './Archive Projects Components/projects/project-list/project-list.component';
+import { ChangePasswordComponent } from './Login Components/change-password/change-password.component';
 
 
 @NgModule({
@@ -63,8 +64,9 @@ import { SidePanelProjectComponent } from './Archive Projects Components/side-pa
     ProjectListComponent,
     SidePanelComponent,
     ProjectPreviewComponent,
-    ProjectComponent,
-    SidePanelProjectComponent
+    SidePanelProjectComponent,
+    ProjectViewComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

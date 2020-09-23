@@ -1,69 +1,69 @@
-    .loginPage {
-        background-color: #fff5ee;
-    }
-    
-    .loginWrapper {
-        margin: auto;
-        width: 45%;
-        max-width: 500px;
-    }
-    
-    .white {
-        color: white;
-    }
-    
-    .seashell {
-        color: #fff5ee;
-    }
-    
-    .helpBlock {
-        font-size: 10pt;
-        color: #f40000;
-    }
-    
-    mat-form-field {
-        width: 100%;
-    }
-    
-    .textOffset {
-        text-indent: 25px;
-    }
-    
-    .loginSection {
-        padding-top: 18%;
-        height: 200%;
-    }
-    
-    .loginSection mat-spinner {
-        display: inline-block;
-        margin-right: 9px;
-        margin-left: -4px;
-    }
-    
-     :host ::ng-deep .seashell-spinner circle {
-        stroke: #fff5ee;
-    }
-    
+.loginPage {
+    background-color: #fff5ee;
+}
+
+.loginWrapper {
+    margin: auto;
+    width: 45%;
+    max-width: 500px;
+}
+
+.white {
+    color: white;
+}
+
+.seashell {
+    color: #fff5ee;
+}
+
+.helpBlock {
+    font-size: 10pt;
+    color: #f40000;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.textOffset {
+    text-indent: 25px;
+}
+
+.loginSection {
+    padding-top: 18%;
+    height: 200%;
+}
+
+.loginSection mat-spinner {
+    display: inline-block;
+    margin-right: 9px;
+    margin-left: -4px;
+}
+
+:host ::ng-deep .seashell-spinner circle {
+    stroke: #fff5ee;
+}
+
+.infoSection {
+    background-color: #222222;
+    border-top: 1px solid #000000;
+    position: absolute;
+    bottom: 0px;
+    padding: 40px;
+}
+
+@media (max-height: 715px) {
     .infoSection {
-        background-color: #222222;
-        border-top: 1px solid #000000;
-        position: absolute;
-        bottom: 0px;
-        padding: 40px;
+        position: relative;
     }
-    
-    @media (max-height: 715px) {
-        .infoSection {
-            position: relative;
-        }
+}
+
+@media (max-width: 756px) {
+    .loginWrapper {
+        width: 95%;
+        text-align: center;
     }
-    
-    @media (max-width: 756px) {
-        .loginWrapper {
-            width: 95%;
-            text-align: center;
-        }
-        .textOffset {
-            text-indent: 0px;
-        }
+    .textOffset {
+        text-indent: 0px;
     }
+}

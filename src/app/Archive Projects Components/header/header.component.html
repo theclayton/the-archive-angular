@@ -1,12 +1,19 @@
 <mat-toolbar color="primary">
     <ul>
         <li>
-            <a mat-button routerLink="/" routerLinkActive="mat-accent" *ngIf="userIsAuthenticated">
+            <a mat-button routerLink="/" *ngIf="isAuthenticated()">
                 The Archive
             </a>
         </li>
         <li>
-            <a mat-button routerLink="/projects" routerLinkActive="mat-accent" *ngIf="userIsAuthenticated">Projects</a>
+            <a mat-button routerLink="/" *ngIf="isAuthenticated()">
+                Featured
+            </a>
+        </li>
+        <li>
+            <a mat-button routerLink="/projects" *ngIf="isAuthenticated()">
+                All Projects
+            </a>
         </li>
     </ul>
 
@@ -14,7 +21,7 @@
 
     <ul>
         <li>
-            <a mat-button routerLink="/admin" routerLinkActive="mat-accent" *ngIf="userIsAdmin">Admin</a>
+            <a mat-button routerLink="/admin" routerLinkActive="mat-accent" *ngIf="isAdmin()">Admin</a>
         </li>
     </ul>
 

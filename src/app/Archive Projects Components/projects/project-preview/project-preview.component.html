@@ -1,1 +1,15 @@
-<p>project-preview works!</p>
+<div class="container">
+    <mat-card>
+        <div class="content">
+            <div class="leftSide" [ngStyle]="{'background-image': getImageUrl()}">
+            </div>
+            <div class="rightSide">
+                <h1>{{ project.title }}</h1>
+                <img *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="15" height="15" />
+                <h4>{{ project.subtitle }}</h4>
+                <p>Developed: {{ project.dateCreated }}</p>
+                <button mat-raised-button color="primary" (click)="onViewButton()">View Project</button>
+            </div>
+        </div>
+    </mat-card>
+</div>
