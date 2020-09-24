@@ -4,10 +4,12 @@
 }
 
 .content {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
 }
 
 h1 {
     text-align: center;
+    padding: 10px;
+    border-bottom: 1px dashed #3f3f3f;
 }

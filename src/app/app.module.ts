@@ -17,6 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AuthInterceptor } from './auth-interceptor';
 
@@ -42,6 +43,7 @@ import { SidePanelProjectComponent } from './Archive Projects Components/side-pa
 import { ProjectViewComponent } from './Archive Projects Components/projects/project-view/project-view.component';
 import { ProjectListComponent } from './Archive Projects Components/projects/project-list/project-list.component';
 import { ChangePasswordComponent } from './Login Components/change-password/change-password.component';
+import { ProjectViewContentComponent } from './Archive Projects Components/projects/project-view/project-view-content/project-view-content.component';
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { ChangePasswordComponent } from './Login Components/change-password/chan
     ProjectPreviewComponent,
     SidePanelProjectComponent,
     ProjectViewComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ProjectViewContentComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,8 @@ import { ChangePasswordComponent } from './Login Components/change-password/chan
     MatExpansionModule,
     MatTableModule,
     MatCheckboxModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    DragDropModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,}],
   bootstrap: [AppComponent]

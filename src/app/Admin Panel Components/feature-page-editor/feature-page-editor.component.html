@@ -1,1 +1,24 @@
-<h1>Feature Page Editor</h1>
+<div class="titleSection">
+    <h1>Featured Projects</h1>
+    <button mat-raised-button class="white" color="primary" (click)="onSave()">Save</button>
+</div>
+
+<div class="listContainer" cdkDropListGroup>
+    <div class="allProjects">
+        <h2>All Projects</h2>
+
+        <div cdkDropList [cdkDropListData]="allProjects" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of allProjects" cdkDrag>{{item}}</div>
+        </div>
+    </div>
+    <span class="material-icons middle">
+        swap_horiz
+    </span>
+    <div class="featuredProjects">
+        <h2>Featured Projects</h2>
+
+        <div cdkDropList [cdkDropListData]="featuredProjects" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of featuredProjects" cdkDrag>{{item}}</div>
+        </div>
+    </div>
+</div>

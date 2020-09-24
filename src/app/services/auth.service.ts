@@ -51,13 +51,32 @@ export class AuthService {
         this.isAuthenticated = true
         this.token = res.token
         this.user.name = res.name
+        this.user.email = res.email
         this.user.authLevel = res.authLevel
-
         this.expirationDate = new Date(today.getTime() + res.expiresIn)
+
         this.setLogoutTimer(res.expiresIn)
         this.saveLoginDataToLocalStorage()
 
         return { success: true, message: "Success! Logging in now..." }
+      }
+    } catch (ex) {
+      return { success: false, message: ex.error.message }
+    }
+  }
+
+  async changePassword(password) {
+    if (!this.user.email) {
+      return { success: false, message: "Unable to update password. User is not properly logged in."}
+    }
+
+    const emailPassword = { email: this.user.email, password: password }
+
+    try {
+      let res = await this.httpClient.put<{ message: string }>(BACKEND_URL, emailPassword).toPromise()
+
+      if (res.message === "success") {
+        return { success: true, message: "Success! Password updated successfully." }
       }
     } catch (ex) {
       return { success: false, message: ex.error.message }
@@ -80,6 +99,7 @@ export class AuthService {
     }
   }
 
+
   logout() {
     this.token = "invalid"
     this.isAuthenticated = false
@@ -101,6 +121,7 @@ export class AuthService {
 
     if (expiresIn > 0) {
       this.token = storageLogin.token
+      this.user.email = storageLogin.email
       this.isAuthenticated = true
       this.setLogoutTimer(expiresIn)
 
@@ -111,6 +132,7 @@ export class AuthService {
 
   private getLocalStorageLogin() {
     const token = localStorage.getItem('token')
+    const email = localStorage.getItem('email')
     const expirationDate = localStorage.getItem('expiration')
 
     // TODO: Decrypt items and then return
@@ -120,6 +142,7 @@ export class AuthService {
 
     return {
       token: token,
+      email: email,
       expirationDate: new Date(expirationDate),
     }
   }
@@ -129,6 +152,7 @@ export class AuthService {
     // CRYPTO_KEY
 
     localStorage.setItem('token', this.token)
+    localStorage.setItem('email', this.user.email)
     localStorage.setItem('expiration', this.expirationDate.toISOString())
   }
 
@@ -144,6 +168,7 @@ export class AuthService {
 
   private clearLocalStorageLoginData() {
     localStorage.removeItem('token')
+    localStorage.removeItem('email')
     localStorage.removeItem('expiration')
   }
 

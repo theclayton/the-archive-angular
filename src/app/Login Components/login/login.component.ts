@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginError: Boolean = false
   loginErrorText: string = "Error logging in. Please check you login information."
 
-  constructor(public authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({

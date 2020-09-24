@@ -1,5 +1,17 @@
-<h1>Manage Archive Projects</h1>
+<div class="container">
+    <h1>Create a New Project</h1>
 
-<button mat-raised-button class="white" color="primary" (click)="onNewProject()">New Project</button>
-<span class="spacer"></span>
-<app-project-list></app-project-list>
+    <div class="formContainer">
+        <form [formGroup]="projectForm">
+            <mat-form-field>
+                <input matInput formControlName="projectName" type="text" placeholder="Project Name">
+                <span *ngIf="!projectForm.get('projectName').valid && projectForm.get('projectName').touched" class="helpBlock">Please enter a valid and unique name.</span>
+            </mat-form-field>
+
+            <button mat-raised-button class="white" color="primary" (click)="onNewProject()">New Project</button>
+        </form>
+    </div>
+
+    <span class="spacer"></span>
+    <app-project-list></app-project-list>
+</div>
