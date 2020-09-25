@@ -8,25 +8,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./project-view.component.css']
 })
 export class ProjectViewComponent implements OnInit {
-  paramsSubscription: Subscription;
-
-  projectName: String = ""
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.projectName = this.route.snapshot.params['name']
-
-    this.paramsSubscription = this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.projectName = params['name'];
-        }
-      );
-  }
-
-  ngOnDestroy() {
-    this.paramsSubscription.unsubscribe();
   }
 
 

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Project } from 'src/app/models/project.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -7,20 +11,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./project-list.component.css']
 })
 export class ProjectListComponent implements OnInit {
-
-  // TODO: GET ALL PROJECTS Newest to Oldest
-  data = [
-    { number: '1', title: 'Project One', subtitle: 'The coolest app ever', category: 'Mobile', dateCreated: '12/05/2000' },
-    { number: '2', title: 'Project Two', subtitle: 'The second coolest app ever', category: 'Mobile', dateCreated: '01/15/2007' },
-  ];
-
-
+  projectList = [];
   userIsAdmin = false;
+  isLoading = true;
+  displayedColumns: string[] = [ 'title', 'subtitle', 'category', 'dateCreated'];
 
-  displayedColumns: string[] = [ 'number', 'title', 'subtitle', 'category', 'dateCreated'];
 
-
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private projectService: ProjectService, private router: Router) { }
 
   ngOnInit() {
     this.checkIfUserIsAdmin()
@@ -28,6 +25,13 @@ export class ProjectListComponent implements OnInit {
     if (this.userIsAdmin) {
       this.displayedColumns.push('actions')
     }
+    this.getProjectList()
+  }
+
+  async getProjectList() {
+    let apiRes = await this.projectService.getAllProjects()
+    this.projectList = apiRes.projects
+    this.isLoading = false
   }
 
   checkIfUserIsAdmin() {
@@ -42,9 +46,7 @@ export class ProjectListComponent implements OnInit {
     }
   }
 
-  onSelectProject(thisProj) {
-    console.log(thisProj)
-    // let url: string = "../assets/docs/" + thisProj.resource
-    // window.open(url, '_blank');
+  onSelectProject(project) {
+    this.router.navigate([`projects/${project.title}`], { state: { project: project }});
   }
 }

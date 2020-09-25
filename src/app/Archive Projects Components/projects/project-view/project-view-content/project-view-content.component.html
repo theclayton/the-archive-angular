@@ -1,12 +1,13 @@
 <div class="container">
     <mat-card>
-        <div class="content">
-            <h1>projectName</h1>
-            <h3>Subtitle</h3>
-            <img alt="techs">
-            <a href="">Links</a>
+        <div class="content" *ngIf="!isLoading">
+            <h1>{{ project.title }}</h1>
+            <h3>{{ project.subtitle }}</h3>
+            <img *ngFor="let tech of project.technologies" alt="tech.name">
+            <br>
+            <a *ngFor="let link of project.links" href="">link.name</a>
             <p>Description of the project</p>
-            <img alt="images">
+            <img *ngFor="let image of project.images" alt="image.name">
         </div>
     </mat-card>
 </div>

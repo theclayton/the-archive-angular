@@ -8,8 +8,8 @@ export interface Project {
     category: String,
     thumbnail: String,
     dateCreated: Date,
-    technologies: [Technology],
+    technologies: Array<Technology>,
     description: String,
-    links: [Link],
-    images: [Image]
+    links: Array<Link>,
+    images: Array<Image>
 }
