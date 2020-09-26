@@ -1,0 +1,45 @@
+<div class="container" *ngIf="isAdmin()">
+    <h3>Edit Project</h3>
+    <mat-card>
+        <form [formGroup]="projectForm">
+
+            <mat-form-field>
+                <input matInput formControlName="title" type="text" placeholder="title">
+                <span *ngIf="!projectForm.get('title').valid && projectForm.get('title').touched" class="helpBlock">Please enter a valid and unique name.</span>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="subtitle" type="text" placeholder="subtitle">
+                <span *ngIf="!projectForm.get('subtitle').valid && projectForm.get('subtitle').touched" class="helpBlock">Please enter a subtitle</span>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="category" type="text" placeholder="category">
+                <span *ngIf="!projectForm.get('category').valid && projectForm.get('category').touched" class="helpBlock">Please enter a category.</span>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput formControlName="description" type="description" placeholder="description">
+                <span *ngIf="!projectForm.get('description').valid && projectForm.get('description').touched" class="helpBlock">Please enter a description of the project.</span>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Please enter the project development date</mat-label>
+                <input matInput [matDatepicker]="dateCreated" formControlName="dateCreated" placeholder="Date Created">
+                <mat-datepicker-toggle matSuffix [for]="dateCreated"></mat-datepicker-toggle>
+                <mat-datepicker #dateCreated></mat-datepicker>
+            </mat-form-field>
+
+            <h3>Upload a thumbnail</h3>
+
+            <h3>technologies ( name, src/upload )</h3>
+
+            <h3>Links ( name, type, url )</h3>
+
+            <h3>Images ( name, src/upload, caption, height, width )</h3>
+
+            <button mat-raised-button class="white" color="primary" (click)="onSaveProject()">Save</button>
+
+        </form>
+    </mat-card>
+</div>

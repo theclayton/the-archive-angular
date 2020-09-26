@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Project } from 'src/app/models/project.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ProjectViewContentComponent implements OnInit {
   project: Project
   isLoading: boolean = true
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private projectService: ProjectService) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private projectService: ProjectService, private authService: AuthService) {
     try {
       this.project = this.router.getCurrentNavigation().extras.state.project;
       this.isLoading = false
@@ -27,11 +28,21 @@ export class ProjectViewContentComponent implements OnInit {
       this.project = res.project
       this.isLoading = false
     } else {
-      this.router.navigate(['/'])
+      this.router.navigate([''])
     }
   }
-  
+
   ngOnInit(): void {
   }
+
+  isAdmin() {
+    return this.authService.getIsAdmin()
+  }
+
+  onEditProject() {
+    let encodedTitle: string = encodeURI(this.project.title.toString())
+    this.router.navigate([`edit/${encodedTitle}`])
+  }
+
 
 }

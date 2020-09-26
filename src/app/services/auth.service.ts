@@ -31,6 +31,14 @@ export class AuthService {
     }
   }
 
+  getIsAdmin() {
+    if (this.user.authLevel === "admin") {
+      return true
+    } else {
+      return false
+    }
+  }
+
   getToken() {
     return this.token
   }

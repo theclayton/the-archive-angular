@@ -1,7 +1,7 @@
 export interface Image {
-    name: String,
-    src: String,
-    caption: String,
-    width: Number,
-    height: Number
+    name: string,
+    src: string,
+    caption: string,
+    width: number,
+    height: number
 }

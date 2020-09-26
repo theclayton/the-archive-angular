@@ -12,7 +12,7 @@ export class ManageProjectsComponent implements OnInit {
   projectForm: FormGroup;
   isLoading: Boolean = false
   Error: Boolean = false
-  ErrorText: string = "Error logging in. Please check you login information."
+  ErrorText: string = "Error creating project."
 
   constructor(private authService: AuthService, private router: Router) { }
 

@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AuthInterceptor } from './auth-interceptor';
 
@@ -44,6 +45,9 @@ import { ProjectViewComponent } from './Archive Projects Components/projects/pro
 import { ProjectListComponent } from './Archive Projects Components/projects/project-list/project-list.component';
 import { ChangePasswordComponent } from './Login Components/change-password/change-password.component';
 import { ProjectViewContentComponent } from './Archive Projects Components/projects/project-view/project-view-content/project-view-content.component';
+import { EditProjectComponent } from './Archive Projects Components/edit-project/edit-project.component';
+import { EditProjectContentComponent } from './Archive Projects Components/edit-project/edit-project-content/edit-project-content.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -69,7 +73,9 @@ import { ProjectViewContentComponent } from './Archive Projects Components/proje
     SidePanelProjectComponent,
     ProjectViewComponent,
     ChangePasswordComponent,
-    ProjectViewContentComponent
+    ProjectViewContentComponent,
+    EditProjectComponent,
+    EditProjectContentComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +96,9 @@ import { ProjectViewContentComponent } from './Archive Projects Components/proje
     MatTableModule,
     MatCheckboxModule,
     FlexLayoutModule,
-    DragDropModule
+    DragDropModule,
+    MatDatepickerModule, 
+    MatNativeDateModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,}],
   bootstrap: [AppComponent]

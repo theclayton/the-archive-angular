@@ -1,5 +1,5 @@
 export interface Link {
-    name: String,
-    type: String,
-    url: String
+    name: string,
+    type: string,
+    url: string
 }

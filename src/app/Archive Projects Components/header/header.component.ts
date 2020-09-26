@@ -9,24 +9,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  user: User
-
   constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
-    this.user = this.authService.getUser()
-  }
+  ngOnInit(): void {}
 
   isAuthenticated() {
     return this.authService.isAuth
   }
 
   isAdmin() {
-    if (this.user.authLevel === "admin") {
-      return true
-    } else {
-      return false
-    }
+    return this.authService.getIsAdmin()
   }
 
   onLogout() {

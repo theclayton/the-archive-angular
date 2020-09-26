@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project-view',
@@ -9,10 +7,9 @@ import { Subscription } from 'rxjs';
 })
 export class ProjectViewComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {}
+  constructor() {}
 
   ngOnInit(): void {
   }
-
 
 }

@@ -3,13 +3,13 @@ import { Link } from "./link.model"
 import { Image } from "./image.model"
 
 export interface Project {
-    title: String,
-    subtitle: String,
-    category: String,
-    thumbnail: String,
+    title: string,
+    subtitle: string,
+    category: string,
+    thumbnail: string,
     dateCreated: Date,
     technologies: Array<Technology>,
-    description: String,
+    description: string,
     links: Array<Link>,
     images: Array<Image>
 }

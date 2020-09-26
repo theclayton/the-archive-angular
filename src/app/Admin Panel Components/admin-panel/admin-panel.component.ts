@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,12 +11,25 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AdminPanelComponent implements OnInit {
   isLoading: Boolean = false
+  user: User
 
-  constructor(public authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.user = this.authService.getUser()
   }
 
+  isAuthenticated() {
+    return this.authService.isAuth
+  }
+
+  isAdmin() {
+    if (this.user.authLevel === "admin") {
+      return true
+    } else {
+      return false
+    }
+  }
 
 
 }
