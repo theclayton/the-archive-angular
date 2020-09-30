@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create-user',
@@ -16,7 +17,7 @@ export class CreateUserComponent implements OnInit {
   isLoading: Boolean = false
   newUserIsAdmin: Boolean = false
 
-  constructor(public authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(public userService: UserService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.cUserForm = new FormGroup({
@@ -26,13 +27,28 @@ export class CreateUserComponent implements OnInit {
     })
   }
 
-  onCreateUser() {
-    // Are you sure prompt
-    // API call
+  async onCreateUser() {
+    let name: string = this.cUserForm.value.name
+    let email: string = this.cUserForm.value.email
+    let password: string = this.cUserForm.value.password
+    let authLevel: string = "Guest"
+
+    if (this.newUserIsAdmin) {
+      authLevel = "Admin"
+    }
+
+    let apiRes = await this.userService.createUser(name, email, password, authLevel)
+    this.openSnackBar(apiRes.message)
   }
 
   checkboxChanged() {
     this.newUserIsAdmin = this.newUserIsAdmin ? false : true
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, "Dismiss", {
+      duration: 5000,
+    });
   }
 
 }

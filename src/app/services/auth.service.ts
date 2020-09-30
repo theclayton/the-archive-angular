@@ -17,7 +17,7 @@ export class AuthService {
   private logoutWarningTimer: any
   private expirationDate = new Date()
 
-  constructor(private httpClient: HttpClient, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private httpClient: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
 
   isAuth() {
     if (this.isAuthenticated) {
@@ -111,7 +111,7 @@ export class AuthService {
   logout() {
     this.token = "invalid"
     this.isAuthenticated = false
-    this.user = null
+    this.user = { name: "", email: "", authLevel: "" }
     this.clearLocalStorageLoginData()
     clearTimeout(this.tokenTimer)
     clearTimeout(this.logoutWarningTimer)
@@ -181,7 +181,7 @@ export class AuthService {
   }
 
   openSnackBar(message: string) {
-    this._snackBar.open(message, "Dismiss", {
+    this.snackBar.open(message, "Dismiss", {
       duration: 5000,
     });
   }

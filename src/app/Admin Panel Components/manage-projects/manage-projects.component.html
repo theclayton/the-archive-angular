@@ -9,6 +9,7 @@
             </mat-form-field>
 
             <button mat-raised-button class="white" color="primary" (click)="onNewProject()">New Project</button>
+            <p *ngIf="error" class="helpBlock">{{ errorText }}</p>
         </form>
     </div>
 

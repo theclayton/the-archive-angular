@@ -16,16 +16,14 @@ export class ProjectListComponent implements OnInit {
   isLoading = true;
   displayedColumns: string[] = [ 'title', 'subtitle', 'category', 'dateCreated'];
 
-
   constructor(private authService: AuthService, private projectService: ProjectService, private router: Router) { }
 
   ngOnInit() {
-    this.checkIfUserIsAdmin()
+    this.getProjectList()
 
-    if (this.userIsAdmin) {
+    if (this.isAdmin()) {
       this.displayedColumns.push('actions')
     }
-    this.getProjectList()
   }
 
   async getProjectList() {
@@ -34,19 +32,21 @@ export class ProjectListComponent implements OnInit {
     this.isLoading = false
   }
 
-  checkIfUserIsAdmin() {
-    try {
-      let user = this.authService.getUser()
-
-      if (user.authLevel === "admin") {
-        this.userIsAdmin = true
-      }
-    } catch (ex) {
-      this.userIsAdmin = false
-    }
+  isAdmin() {
+    return this.authService.getIsAdmin()
   }
 
   onSelectProject(project) {
     this.router.navigate([`projects/${project.title}`], { state: { project: project }});
   }
+
+  onClickEdit() {
+    console.log("hii")
+    // this.router.navigate([`edit/${project.title}`], { state: { project: project }});
+  }
+
+  onClickDelete() {
+    // alert("Are you sure you want to delete, " + project.title)
+  }
+
 }

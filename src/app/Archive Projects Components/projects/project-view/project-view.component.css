@@ -15,3 +15,9 @@
     display: flex;
     flex-direction: column;
 }
+
+@media (max-width: 765px) {
+    app-side-panel {
+        display: none;
+    }
+}

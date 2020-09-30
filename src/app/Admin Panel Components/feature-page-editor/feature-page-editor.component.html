@@ -8,17 +8,17 @@
         <h2>All Projects</h2>
 
         <div cdkDropList [cdkDropListData]="allProjects" class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of allProjects" cdkDrag>{{item}}</div>
+            <div class="example-box" *ngFor="let item of allProjects" cdkDrag>{{ item.title }}</div>
         </div>
     </div>
     <span class="material-icons middle">
         swap_horiz
     </span>
     <div class="featuredProjects">
-        <h2>Featured Projects</h2>
+        <h2>Featured Projects (Home)</h2>
 
         <div cdkDropList [cdkDropListData]="featuredProjects" class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of featuredProjects" cdkDrag>{{item}}</div>
+            <div class="example-box" *ngFor="let item of featuredProjects" cdkDrag>{{ item.title }}</div>
         </div>
     </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Project } from 'src/app/models/project.model';
 
 @Component({
@@ -8,10 +9,12 @@ import { Project } from 'src/app/models/project.model';
 })
 export class ProjectPreviewComponent implements OnInit {
   @Input() project: Project;
+  descriptionPreview: String = ""
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.descriptionPreview = this.project.description.substr(0, 150) + "..."
   }
 
   getImageUrl() {
@@ -19,6 +22,6 @@ export class ProjectPreviewComponent implements OnInit {
   }
 
   onViewButton() {
-    console.log(this.project.title)
+    this.router.navigate([`projects/${this.project.title}`], { state: { project: this.project }});
   }
 }

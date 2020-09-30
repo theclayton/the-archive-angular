@@ -4,6 +4,7 @@
 
 .content {
     width: 100%;
+    min-height: 250px;
     display: flex;
 }
 
@@ -37,4 +38,10 @@ h4 {
 
 img {
     margin: 10px 5px 5px 0px;
+}
+
+.description {
+    width: 180px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

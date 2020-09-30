@@ -1,14 +1,14 @@
 <div class="container">
-    <button mat-button color="primary" *ngIf="isAdmin" (click)="onEditProject()">Edit</button>
+    <button mat-button color="primary" *ngIf="isAdmin()" (click)="onEditProject()">Edit</button>
     <mat-card>
         <div class="content" *ngIf="!isLoading">
             <h1>{{ project.title }}</h1>
             <h3>{{ project.subtitle }}</h3>
             <img *ngFor="let tech of project.technologies" alt="tech.name">
             <br>
-            <a *ngFor="let link of project.links" href="">link.name</a>
-            <p>Description of the project</p>
-            <img *ngFor="let image of project.images" alt="image.name">
+            <a *ngFor="let link of project.links" href="{{ link.url }}">{{ link.name }}</a>
+            <p>{{ project.description }}</p>
+            <img *ngFor="let image of project.images" [src]="image.src" alt="{{ image.name }}" height="{{image.height}}" width="{{image.width}}">
         </div>
     </mat-card>
 </div>

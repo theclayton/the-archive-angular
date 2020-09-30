@@ -1,36 +1,34 @@
 <div class="pageContainer">
     <mat-card>
         <h1>All Users</h1>
-        <table mat-table [dataSource]="data" class="mat-elevation-z0">
-
-            <ng-container matColumnDef="number">
-                <th mat-header-cell *matHeaderCellDef>
-                    <h3>No.</h3>
-                </th>
-                <td mat-cell *matCellDef="let element"><b> {{element.number}} </b></td>
-            </ng-container>
+        <table mat-table [dataSource]="users" class="mat-elevation-z0">
 
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef>
                     <h3>Name</h3>
                 </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                <td mat-cell *matCellDef="let user"> {{user.name}} </td>
             </ng-container>
-
 
             <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef>
                     <h3>Email</h3>
                 </th>
-                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                <td mat-cell *matCellDef="let user"> {{user.email}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="access">
+                <th mat-header-cell *matHeaderCellDef>
+                    <h3>Access</h3>
+                </th>
+                <td mat-cell *matCellDef="let user"> {{user.authLevel}} </td>
+            </ng-container>
 
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>
                     <h3>Actions</h3>
                 </th>
-                <td mat-cell *matCellDef="let element">
+                <td mat-cell *matCellDef="let user">
                     <button mat-icon-button color="primary" aria-label="delete icon">
                      <mat-icon>edit</mat-icon>
                    </button>
@@ -42,11 +40,8 @@
             </ng-container>
 
 
-
-
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row (click)="openDoc(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row (click)="onEditUser(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
 
         </table>
     </mat-card>

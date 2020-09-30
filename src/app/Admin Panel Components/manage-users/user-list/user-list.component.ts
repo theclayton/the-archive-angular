@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -7,22 +7,25 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  data = [
-    { number: '1', name: 'clayton', email: 'clayton@flaresoftware.com' },
-    { number: '2', name: 'guest', email: 'clayton@flaresoftware.com' }
-
-  ];
-
-  displayedColumns: string[] = [ 'number', 'name', 'email', 'actions' ];
+  users = [];
+  isLoading: Boolean = true
+  displayedColumns: string[] = [ 'name', 'email', 'access', 'actions' ];
 
 
-  constructor(public authService: AuthService) { }
+  constructor(public userService: UserService) {}
 
   ngOnInit() {
+    this.getAllUsers()
   }
 
-  openDoc(thisRow) {
-    let url: string = "../assets/docs/" + thisRow.resource
-    window.open(url, '_blank');
+  async getAllUsers() {
+    let apiRes = await this.userService.getAllUsers()
+    this.users = apiRes.users
+    this.isLoading = false
   }
+
+  onEditUser(user) {
+    console.log(user)
+  }
+
 }

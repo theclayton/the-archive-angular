@@ -7,9 +7,10 @@ export interface Project {
     subtitle: string,
     category: string,
     thumbnail: string,
+    featured: string,
+    description: string,
     dateCreated: Date,
     technologies: Array<Technology>,
-    description: string,
     links: Array<Link>,
     images: Array<Image>
 }

@@ -24,7 +24,7 @@ export class ProjectService {
       return { message: res.message, projects: projects }
 
     } catch (ex) {
-      return { message: ex.error.message }
+      return { message: "Unable to get project list" }
     }
   }
 
@@ -33,15 +33,53 @@ export class ProjectService {
 
     try {
       let res = await this.httpClient.get<{ message: string, project: any }>(`${API_URL}/${name}`).toPromise()
-
       let project: Project = this.constructProjectObject(res.project)
+      return { message: res.message, project: project }
+
+    } catch (ex) {
+      return { message: "Unable to get project" }
+    }
+  }
+
+  async createProject(projectTitle: string) {
+    const title = { title: projectTitle }
+
+    try {
+      let res = await this.httpClient.post<{ message: string, project: any }>(API_URL + "/create", title).toPromise()
+      const project: Project = this.constructProjectObject(res.project)
 
       return { message: res.message, project: project }
 
     } catch (ex) {
-      return { message: ex.error.message }
+      return { message: "Unable to create project" }
     }
   }
+
+
+  async getFeaturedProjects(type: string) {
+    try {
+      let res = await this.httpClient.get<{ message: string, projects: Array<any> }>(API_URL + "/featured/" + type).toPromise()
+
+      let projects: Array<Project> = res.projects.map((project) => this.constructProjectObject(project))
+      return { message: res.message, projects: projects }
+
+    } catch (ex) {
+      return { message: "Unable to get featured list" }
+    }
+  }
+
+
+  async updateFeaturedProjects(type: string, featuredProjects: Array<{ title: string }>) {
+    try {
+      let res = await this.httpClient.post<{ message: string }>(API_URL + "/featured/" + type, featuredProjects).toPromise()
+
+      return { message: res.message }
+
+    } catch (ex) {
+      return { message: "Unable to save featured list" }
+    }
+  }
+
 
 
   constructProjectObject(project) {
@@ -75,9 +113,10 @@ export class ProjectService {
       subtitle: project.subtitle,
       category: project.category,
       thumbnail: project.thumbnail,
+      featured: project.featured,
+      description: project.description,
       dateCreated: project.dateCreated,
       technologies: technologies,
-      description: project.description,
       links: links,
       images: images
     }

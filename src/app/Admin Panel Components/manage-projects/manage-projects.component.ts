@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-manage-projects',
@@ -11,10 +12,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ManageProjectsComponent implements OnInit {
   projectForm: FormGroup;
   isLoading: Boolean = false
-  Error: Boolean = false
-  ErrorText: string = "Error creating project."
+  error: Boolean = false
+  errorText: string = "Error creating project."
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private projectService: ProjectService, private router: Router) { }
 
   ngOnInit(): void {
     this.projectForm = new FormGroup({
@@ -22,13 +23,28 @@ export class ManageProjectsComponent implements OnInit {
     })
   }
 
-  onNewProject() {
+  async onNewProject() {
+    this.projectForm.markAllAsTouched();
+    if (this.projectForm.invalid) return
+
+    this.isLoading = true
     let projectName: string = this.projectForm.value.projectName
 
-    console.log(projectName);
+    try {
+      let apiRes = await this.projectService.createProject(projectName);
 
-    // TODO: POST apt/projects/create
-    // return ErrorText or route to project editor
+      this.isLoading = false
+
+      if (apiRes.message === "success") {
+        this.router.navigate([`edit/${apiRes.project.title}`], { state: { project: apiRes.project }});
+      } else {
+        this.error = true
+        this.errorText = apiRes.message
+      }
+    } catch {
+
+    }
+
   }
 
 }

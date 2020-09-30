@@ -18,7 +18,7 @@ export class ProjectViewContentComponent implements OnInit {
       this.project = this.router.getCurrentNavigation().extras.state.project;
       this.isLoading = false
     } catch {
-      this.getProjectDatafromAPI(this.activatedRoute.snapshot.params['name'])
+      // pass
     }
   }
 
@@ -33,6 +33,13 @@ export class ProjectViewContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.checkIfRouteChanged()
+  }
+
+  checkIfRouteChanged() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+        this.getProjectDatafromAPI(params['name'])
+    })
   }
 
   isAdmin() {
