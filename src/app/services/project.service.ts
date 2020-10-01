@@ -56,6 +56,21 @@ export class ProjectService {
   }
 
 
+  async updateProject(title: string, project: Project) {
+    const reqBody = { title: title, project: project }
+
+    try {
+      let res = await this.httpClient.put<{ message: string, project: any }>(API_URL, reqBody).toPromise()
+      const project: Project = this.constructProjectObject(res.project)
+
+      return { message: res.message, project: project }
+
+    } catch (ex) {
+      return { message: "Unable to update project" }
+    }
+  }
+
+
   async getFeaturedProjects(type: string) {
     try {
       let res = await this.httpClient.get<{ message: string, projects: Array<any> }>(API_URL + "/featured/" + type).toPromise()
@@ -81,6 +96,17 @@ export class ProjectService {
   }
 
 
+  async deleteProject(title: string) {
+    try {
+      let res = await this.httpClient.delete<{ message: string }>(API_URL + "/delete/" + encodeURI(title)).toPromise()
+      console.log(res)
+      return { message: res.message }
+
+    } catch {
+      return { message: "Unable to delete project." }
+    }
+  }
+
 
   constructProjectObject(project) {
     let technologies: Array<Technology> = project.technologies.map((tech) => {
@@ -90,7 +116,7 @@ export class ProjectService {
       }
     });
 
-    let links: Array<Link> = project.technologies.map((link) => {
+    let links: Array<Link> = project.links.map((link) => {
       return {
         name: link.name,
         type: link.type,
@@ -98,7 +124,7 @@ export class ProjectService {
       }
     });
 
-    let images: Array<Image> = project.technologies.map((image) => {
+    let images: Array<Image> = project.images.map((image) => {
       return {
         name: image.name,
         src: image.src,

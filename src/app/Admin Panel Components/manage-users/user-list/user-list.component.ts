@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserListComponent implements OnInit {
   users = [];
   isLoading: Boolean = true
-  displayedColumns: string[] = [ 'name', 'email', 'access', 'actions' ];
+  displayedColumns: string[] = [ 'name', 'email', 'access' ];
 
 
   constructor(public userService: UserService) {}
@@ -21,6 +21,7 @@ export class UserListComponent implements OnInit {
   async getAllUsers() {
     let apiRes = await this.userService.getAllUsers()
     this.users = apiRes.users
+
     this.isLoading = false
   }
 

@@ -5,10 +5,10 @@
             </div>
             <div class="rightSide">
                 <h1>{{ project.title }}</h1>
-                <img *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="15" height="15" />
+                <img *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="25" height="25" matTooltip="{{ tech.name }}">
                 <h4>{{ project.subtitle }}</h4>
                 <p>{{ descriptionPreview }}</p>
-                <p>Developed: {{ project.dateCreated }}</p>
+                <p>Developed: {{ project.dateCreated | date }}</p>
                 <button mat-raised-button color="primary" (click)="onViewButton()">View Project</button>
             </div>
         </div>

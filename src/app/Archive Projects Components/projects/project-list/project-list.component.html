@@ -43,22 +43,6 @@
             </ng-container>
 
 
-            <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef>
-                    <h3>Actions</h3>
-                </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="primary" aria-label="delete icon" (clicK)="onClickEdit()">
-                     <mat-icon>edit</mat-icon>
-                   </button>
-
-                    <button mat-icon-button color="primary" aria-label="delete icon" (clicK)="onClickDelete()">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-            </ng-container>
-
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelectProject(row)" [project]="row"></tr>
 

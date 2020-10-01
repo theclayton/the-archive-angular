@@ -4,9 +4,9 @@
   </div>
   <div class="details">
     <p class="projTitle"><strong>{{ project.title }}</strong></p>
-    <p class="date">{{ project.dateCreated }}</p>
+    <p class="date">{{ project.dateCreated | date }}</p>
     <div class="detailsImages">
-      <img *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="15" height="15" />
+      <img *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="15" height="15" matTooltip="{{ tech.name }}" >
     </div>
     <p class="projSubtitle">{{ project.subtitle }}</p>
   </div>

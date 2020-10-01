@@ -16,6 +16,7 @@ export class ProjectViewContentComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private projectService: ProjectService, private authService: AuthService) {
     try {
       this.project = this.router.getCurrentNavigation().extras.state.project;
+      window.scrollTo(0, 0)
       this.isLoading = false
     } catch {
       // pass
@@ -26,6 +27,7 @@ export class ProjectViewContentComponent implements OnInit {
     const res = await this.projectService.getOneProject(projectName)
     if (res) {
       this.project = res.project
+      window.scrollTo(0, 0)
       this.isLoading = false
     } else {
       this.router.navigate([''])

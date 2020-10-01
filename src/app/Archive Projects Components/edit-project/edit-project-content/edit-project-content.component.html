@@ -18,10 +18,17 @@
                 <span *ngIf="!projectForm.get('category').valid && projectForm.get('category').touched" class="helpBlock">Please enter a category.</span>
             </mat-form-field>
 
+            <section class="featured-section">
+                <mat-checkbox [checked]='isFeatured' color='primary' (change)="checkboxChanged()">
+                    Set as Featured
+                </mat-checkbox>
+            </section>
+
             <mat-form-field>
-                <input matInput formControlName="description" type="description" placeholder="description">
+                <textarea matInput type="text" formControlName="description" [value]="description" cdkTextareaAutosize cdkAutosizeMinRows="7"></textarea>
                 <span *ngIf="!projectForm.get('description').valid && projectForm.get('description').touched" class="helpBlock">Please enter a description of the project.</span>
             </mat-form-field>
+
 
             <mat-form-field>
                 <mat-label>Please enter the project development date</mat-label>
@@ -38,7 +45,9 @@
 
             <h3>Images ( name, src/upload, caption, height, width )</h3>
 
+            <button mat-button color="primary" (click)="onSaveProject()">Cancel</button>
             <button mat-raised-button class="white" color="primary" (click)="onSaveProject()">Save</button>
+            <button mat-raised-button class="white" color="warn" (click)="onDeleteProject()">Delete</button>
 
         </form>
     </mat-card>

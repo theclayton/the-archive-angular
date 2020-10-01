@@ -19,6 +19,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AuthInterceptor } from './auth-interceptor';
 
@@ -97,8 +98,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCheckboxModule,
     FlexLayoutModule,
     DragDropModule,
-    MatDatepickerModule, 
-    MatNativeDateModule
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,}],
   bootstrap: [AppComponent]
