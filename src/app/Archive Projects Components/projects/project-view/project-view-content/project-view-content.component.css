@@ -42,11 +42,15 @@ p {
 
 .links {
     display: inline-block;
-    padding: 20px 0px;
+    padding: 10px 0px 20px 0px;
 }
 
 .links a {
     padding: 0px 12px 0px 0px;
+}
+
+.small-bottom-spacer {
+    margin-bottom: 5px;
 }
 
 .description {

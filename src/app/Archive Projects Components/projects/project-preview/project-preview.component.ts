@@ -21,7 +21,7 @@ export class ProjectPreviewComponent implements OnInit {
     return `url('${this.project.images[0].src}')`;
   }
 
-  onViewButton() {
+  onViewClicked() {
     this.router.navigate([`projects/${this.project.title}`], { state: { project: this.project }});
   }
 }

@@ -21,7 +21,14 @@
 
     <ul>
         <li>
-            <a mat-button routerLink="/admin" *ngIf="isAdmin()">Admin</a>
+            <a mat-button routerLink="/projects" *ngIf="isAuthenticated()">
+                API
+            </a>
+        </li>
+        <li>
+            <a mat-button href="https://github.com/theclayton/the-archive" target="_blank">
+                Source
+            </a>
         </li>
     </ul>
 
@@ -29,6 +36,7 @@
         <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #accountMenu="matMenu">
+        <button mat-menu-item routerLink="/admin" [disabled]="!isAdmin()">Admin</button>
         <button mat-menu-item routerLink="/my-account">My Account</button>
         <button mat-menu-item (click)="onLogout()">Log Out</button>
     </mat-menu>

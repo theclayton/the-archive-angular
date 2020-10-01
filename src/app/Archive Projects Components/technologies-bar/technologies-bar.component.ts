@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-technologies-bar',
@@ -6,16 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./technologies-bar.component.css']
 })
 export class TechnologiesBarComponent implements OnInit {
+  technologies = [];
 
-  technologies = [
-    { name: "Xcode", src: "src/assets/technologies/xcode.png" },
-    { name: "Swift", src: "src/assets/technologies/swift.png" },
-    { name: "Javascript", src: "src/assets/technologies/javascript.png" },
-  ]
-
-  constructor() { }
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit(): void {
+    this.getTechnologies()
+  }
+
+  async getTechnologies() {
+    let apiRes = await this.projectService.getUniqueTechnologies()
+    if (apiRes.message === "success") {
+      if (apiRes.names.length === apiRes.srcs.length) {
+        for (let i=0; i<apiRes.names.length; i++) {
+          this.technologies.push({ name: apiRes.names[i], src: apiRes.srcs[i] })
+        }
+      }
+    } else {
+      console.log(apiRes.message)
+    }
   }
 
   onTechClick(tech) {

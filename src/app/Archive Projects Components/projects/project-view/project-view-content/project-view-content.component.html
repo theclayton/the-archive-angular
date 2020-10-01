@@ -16,13 +16,13 @@
 
 
             <div class="links">
-                <h5>Project Links:</h5>
+                <h5 class="small-bottom-spacer">Project Links:</h5>
                 <a *ngFor="let link of project.links" href="{{ link.url }}">{{ link.name }}</a>
             </div>
             <br>
 
             <div class="technology">
-                <h5>Developed with the following:</h5>
+                <h5>Technologies used:</h5>
                 <img *ngFor="let tech of project.technologies" src="{{ tech.src }}" alt="{{ tech.name }}" matTooltip="{{ tech.name }}" width="40" height="40">
             </div>
 

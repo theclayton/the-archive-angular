@@ -1,5 +1,5 @@
 .container {
-    background-color: #efefef;
+    background-color: #ebebeb;
     text-align: center;
 }
 
@@ -22,8 +22,7 @@ input[type=search] {
     border: solid 1px rgb(228, 227, 227);
     padding: 9px 10px 9px 28px;
     margin: 5px;
-    width: 80%;
-    max-width: 650px;
+    width: 55%;
     -webkit-border-radius: 10em;
     -moz-border-radius: 10em;
     border-radius: 10em;
@@ -33,16 +32,16 @@ input[type=search] {
 }
 
 input[type=search]:focus {
-    width: 100%;
-    max-width: 500px;
+    width: 65%;
     background-color: #fff;
     border-color: #66CC75;
 }
 
 input:-moz-placeholder {
-    color: #b9b9b9;
+    color: #aaaaaa;
 }
 
 input::-webkit-input-placeholder {
-    color: #b9b9b9;
+    color: #aaaaaa;
+    ;
 }

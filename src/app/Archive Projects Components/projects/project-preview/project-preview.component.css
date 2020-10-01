@@ -15,6 +15,7 @@
     border: 1px solid #d7d7d7;
     border-radius: 10px;
     margin-right: 15px;
+    cursor: pointer;
 }
 
 .rightSide {
@@ -44,4 +45,14 @@ img {
     width: 180px;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+@media (max-width: 450px) {
+    .leftSide {
+        display: none;
+    }
+    .rightSide {
+        max-width: 100%;
+        border-left: none;
+    }
 }

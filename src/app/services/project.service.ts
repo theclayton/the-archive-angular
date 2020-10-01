@@ -71,6 +71,18 @@ export class ProjectService {
   }
 
 
+  async getUniqueTechnologies() {
+    try {
+      let res = await this.httpClient.get<{ message: string, names: Array<any>, srcs: Array<any> }>(API_URL + "/search/technologies").toPromise()
+
+      // let projects: Array<Project> = res.projects.map((project) => this.constructProjectObject(project))
+      return { message: res.message, names: res.names, srcs: res.srcs }
+
+    } catch (ex) {
+      return { message: "Unable to get featured list" }
+    }
+  }
+
   async getFeaturedProjects(type: string) {
     try {
       let res = await this.httpClient.get<{ message: string, projects: Array<any> }>(API_URL + "/featured/" + type).toPromise()

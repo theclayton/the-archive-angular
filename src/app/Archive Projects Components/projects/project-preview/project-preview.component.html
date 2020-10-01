@@ -1,7 +1,7 @@
 <div class="container">
     <mat-card>
         <div class="content">
-            <div class="leftSide" [ngStyle]="{'background-image': getImageUrl()}">
+            <div class="leftSide" [ngStyle]="{'background-image': getImageUrl()}" (click)="onViewClicked()">
             </div>
             <div class="rightSide">
                 <h1>{{ project.title }}</h1>
@@ -9,7 +9,7 @@
                 <h4>{{ project.subtitle }}</h4>
                 <p>{{ descriptionPreview }}</p>
                 <p>Developed: {{ project.dateCreated | date }}</p>
-                <button mat-raised-button color="primary" (click)="onViewButton()">View Project</button>
+                <button mat-raised-button color="primary" (click)="onViewClicked()">View Project</button>
             </div>
         </div>
     </mat-card>
