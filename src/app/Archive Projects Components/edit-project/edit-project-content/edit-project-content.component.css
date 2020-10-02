@@ -40,3 +40,25 @@ mat-spinner {
 :host ::ng-deep .seashell-spinner circle {
     stroke: #fff5ee;
 }
+
+.thumbnail,
+.newTech,
+.newImage,
+.links {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    padding: 0px 10px;
+}
+
+.thumbnail input,
+.newTech input,
+.newImage input {
+    padding-left: 20px;
+    max-width: 190px;
+}
+
+.link {
+    border-bottom: 1px dashed #d4d4d4;
+}

@@ -8,7 +8,7 @@ import { Technology } from '../models/technology.model';
 import { Link } from '../models/link.model';
 import { Image } from '../models/image.model';
 
-const API_URL = environment.apiUrl + "/projects"
+const API_URL = environment.apiUrl + "api/projects"
 
 @Injectable({ providedIn: "root" })
 

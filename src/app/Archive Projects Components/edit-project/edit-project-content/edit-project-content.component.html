@@ -25,6 +25,7 @@
             </section>
 
             <mat-form-field>
+                <mat-label>Description</mat-label>
                 <textarea matInput type="text" formControlName="description" [value]="description" cdkTextareaAutosize cdkAutosizeMinRows="7"></textarea>
                 <span *ngIf="!projectForm.get('description').valid && projectForm.get('description').touched" class="helpBlock">Please enter a description of the project.</span>
             </mat-form-field>
@@ -38,12 +39,62 @@
             </mat-form-field>
 
             <h3>Upload a thumbnail</h3>
+            <div class="thumbnail">
+                <img src="{{ thumbnail }}" alt="thumbnail" height="60" width="60">
+                <input type="file" name="file" (change)="onUploadThumbnail($event)" class="uploadFile" />
+                <button mat-raised-button color="primary" (click)="onUploadThumbnailClicked()">Upload</button>
+                <p>(60px x 60px)</p>
+            </div>
 
-            <h3>technologies ( name, src/upload )</h3>
+
 
             <h3>Links ( name, type, url )</h3>
+            <div class="links">
+                <div class="link">
+                    <input type="text" name="file" value="name" />
+                    <input type="text" name="file" value="type" />
+                    <input type="text" name="file" value="url" />
+                    <button>Remove</button>
+                </div>
+
+                <br><button>Add</button>
+            </div>
+
+
+
+
+
+            <h3>technologies ( name, src/upload )</h3>
+            <!-- Make a list of all techs as follows -->
+            <img src="" alt="" width="40" height="40">
+            <input type="text" name="file" value="name" />
+            <button>Remove</button>
+
+            <br><button>Add Technology</button>
+            <p>Drop down to choose from...</p>
+            <div class="newTech">
+                <img src="{{ newTech }}" alt=" " height="40" width="40">
+                <input type="file" name="file" (change)="onUploadNewTech($event)" class="uploadFile" />
+                <button mat-raised-button color="primary" (click)="onUploadNewTechClicked()">Upload New</button>
+                <p>(40px x 40px)</p>
+            </div>
+
+
 
             <h3>Images ( name, src/upload, caption, height, width )</h3>
+            <img src="" alt="" width="40" height="40">
+            <input type="text" name="file" value="caption" />
+            <input type="text" name="file" value="display height" />
+            <input type="text" name="file" value="dispaly width" />
+            <button>Remove</button>
+            <br><button>Add</button>
+            <br>
+            <div class="newImage">
+                <img src="{{ newImage }}" alt=" " width="100">
+                <input type="file" name="file" (change)="onUploadNewImage($event)" class="uploadFile" />
+                <button mat-raised-button color="primary" (click)="onUploadNewImageClicked()">Upload Image</button>
+            </div>
+            <br>
 
             <button mat-button color="primary" (click)="onSaveProject()">Cancel</button>
             <button mat-raised-button class="white" color="primary" (click)="onSaveProject()">Save</button>

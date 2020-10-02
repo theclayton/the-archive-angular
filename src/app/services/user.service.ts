@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
 import { User } from '../models/user.model';
 
-const BACKEND_URL = environment.apiUrl + "/users"
+const BACKEND_URL = environment.apiUrl + "api/users"
 
 @Injectable({ providedIn: "root" })
 

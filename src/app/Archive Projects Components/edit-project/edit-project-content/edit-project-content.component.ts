@@ -6,6 +6,8 @@ import { title } from 'process';
 import { Project } from 'src/app/models/project.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { UploadService } from 'src/app/services/upload.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-project-content',
@@ -20,7 +22,16 @@ export class EditProjectContentComponent implements OnInit {
   Error: Boolean = false
   ErrorText: string = "Error saving project."
 
-  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router, private projectService: ProjectService, private snackBar: MatSnackBar) {
+  thumbnail: string = ""
+  thumbnailUpload: FormData = new FormData()
+  canUploadThumbnail = false
+
+  newTech: string = "https://flaresoftware.com/images/flaresoftware-logo.png"
+  newTechUpload: FormData = new FormData()
+  canUploadNewTech = false
+
+
+  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router, private projectService: ProjectService, private uploadService: UploadService, private snackBar: MatSnackBar) {
     try {
       this.project = this.router.getCurrentNavigation().extras.state.project;
       this.isLoading = false
@@ -68,10 +79,51 @@ export class EditProjectContentComponent implements OnInit {
     this.projectForm.get("dateCreated").setValue(this.project.dateCreated);
     this.projectForm.get("description").setValue(this.project.description);
 
-    // this.projectForm.get("thumbnail").setValue(this.project.title);
+    this.thumbnail = this.project.thumbnail
     // this.projectForm.get("technologies").setValue(this.project.title);
     // this.projectForm.get("links").setValue(this.project.title);
     // this.projectForm.get("images").setValue(this.project.title);
+  }
+
+  onUploadThumbnail(event) {
+    if (event.target.files.length > 0) {
+      this.thumbnailUpload.append('file', event.target.files[0]);
+      this.thumbnail = ""
+    }
+    this.canUploadThumbnail = true
+  }
+
+  async onUploadThumbnailClicked() {
+    if (this.canUploadThumbnail) {
+      this.canUploadThumbnail = false
+
+      let apiRes = await this.uploadService.uploadFile(this.thumbnailUpload)
+      if (apiRes.message === "success") {
+        this.thumbnail = environment.apiUrl + apiRes.filename
+      } else {
+
+      }
+    }
+  }
+
+  onUploadNewTech(event) {
+    if (event.target.files.length > 0) {
+      this.newTechUpload.append('file', event.target.files[0]);
+    }
+    this.canUploadNewTech = true
+  }
+
+  async onUploadNewTechClicked() {
+    if (this.canUploadNewTech) {
+      this.canUploadNewTech = false
+
+      let apiRes = await this.uploadService.uploadFile(this.newTechUpload)
+      if (apiRes.message === "success") {
+        // Add photo and blank name to list
+      } else {
+
+      }
+    }
   }
 
   async onSaveProject() {
@@ -89,7 +141,7 @@ export class EditProjectContentComponent implements OnInit {
       title: this.projectForm.value.title,
       subtitle: this.projectForm.value.subtitle,
       category: this.projectForm.value.category,
-      thumbnail: this.project.thumbnail,
+      thumbnail: this.thumbnail,
       featured: featured,
       description: this.projectForm.value.description,
       dateCreated: this.projectForm.value.dateCreated,

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment'
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-const BACKEND_URL = environment.apiUrl + "/auth/login"
+const BACKEND_URL = environment.apiUrl + "api/auth/login"
 
 @Injectable({ providedIn: "root" })
 
