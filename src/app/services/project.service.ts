@@ -75,8 +75,14 @@ export class ProjectService {
     try {
       let res = await this.httpClient.get<{ message: string, names: Array<any>, srcs: Array<any> }>(API_URL + "/search/technologies").toPromise()
 
-      // let projects: Array<Project> = res.projects.map((project) => this.constructProjectObject(project))
-      return { message: res.message, names: res.names, srcs: res.srcs }
+      let technologies = []
+      if (res.names.length === res.srcs.length) {
+        for (let i=0; i<res.names.length; i++) {
+          technologies.push({ name: res.names[i], src: res.srcs[i] })
+        }
+      }
+
+      return { message: res.message, technologies: technologies }
 
     } catch (ex) {
       return { message: "Unable to get featured list" }

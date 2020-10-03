@@ -47,54 +47,65 @@
             </div>
 
 
-
-            <h3>Links ( name, type, url )</h3>
+            <h3>Project Links</h3>
             <div class="links">
-                <div class="link">
-                    <input type="text" name="file" value="name" />
-                    <input type="text" name="file" value="type" />
-                    <input type="text" name="file" value="url" />
-                    <button>Remove</button>
+                <div *ngFor="let link of links.controls; index as i" class="link">
+                    <ng-container [formGroup]="link">
+                        <input formControlName="name" placeholder="Name" />
+                        <input formControlName="type" placeholder="Type" />
+                        <input formControlName="url" placeholder="URL" />
+                        <button mat-mini-fab color="warn" (click)="onRemoveLink(i)"><mat-icon>delete</mat-icon></button>
+                    </ng-container>
                 </div>
 
-                <br><button>Add</button>
+                <button mat-raised-button color="primary" (click)="onAddLinkClicked()">Add Link</button>
             </div>
-
-
-
 
 
             <h3>technologies ( name, src/upload )</h3>
             <!-- Make a list of all techs as follows -->
-            <img src="" alt="" width="40" height="40">
-            <input type="text" name="file" value="name" />
-            <button>Remove</button>
+            <div class="technologies">
+                <div *ngFor="let tech of techs.controls; index as i" class="link">
+                    <ng-container [formGroup]="tech">
+                        <input formControlName="name" placeholder="Name" />
+                        <input formControlName="src" placeholder="SRC" class="grey" />
+                        <button mat-mini-fab color="warn" (click)="onRemoveTech(i)"><mat-icon>delete</mat-icon></button>
+                    </ng-container>
+                </div>
 
-            <br><button>Add Technology</button>
-            <p>Drop down to choose from...</p>
-            <div class="newTech">
-                <img src="{{ newTech }}" alt=" " height="40" width="40">
-                <input type="file" name="file" (change)="onUploadNewTech($event)" class="uploadFile" />
-                <button mat-raised-button color="primary" (click)="onUploadNewTechClicked()">Upload New</button>
-                <p>(40px x 40px)</p>
+                <!-- <mat-form-field>
+                    <mat-select formControlName="allTechnologies">
+                        <mat-option *ngFor="let allTech of allTechnologies" [value]="allTech.name">
+                            {{ allTech.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+
+                <div class="newTech">
+                    <img src="{{ newTech }}" alt=" " height="40" width="40">
+                    <input type="file" name="file" (change)="onUploadNewTech($event)" class="uploadFile" />
+                    <button mat-raised-button color="primary" (click)="onUploadNewTechClicked()">Upload New</button>
+                    <p>(40px x 40px)</p>
+                </div>
             </div>
-
 
 
             <h3>Images ( name, src/upload, caption, height, width )</h3>
-            <img src="" alt="" width="40" height="40">
-            <input type="text" name="file" value="caption" />
-            <input type="text" name="file" value="display height" />
-            <input type="text" name="file" value="dispaly width" />
-            <button>Remove</button>
-            <br><button>Add</button>
-            <br>
             <div class="newImage">
-                <img src="{{ newImage }}" alt=" " width="100">
-                <input type="file" name="file" (change)="onUploadNewImage($event)" class="uploadFile" />
-                <button mat-raised-button color="primary" (click)="onUploadNewImageClicked()">Upload Image</button>
+                <img src="" alt="" width="40" height="40">
+                <input type="text" name="file" value="caption" />
+                <input type="text" name="file" value="display height" />
+                <input type="text" name="file" value="dispaly width" />
+                <button>Remove</button>
+                <button>Add</button>
+
+                <div>
+                    <img src="{{ newImage }}" alt=" " width="100">
+                    <input type="file" name="file" (change)="onUploadNewImage($event)" class="uploadFile" />
+                    <button mat-raised-button color="primary" (click)="onUploadNewImageClicked()">Upload Image</button>
+                </div>
             </div>
-            <br>
+
 
             <button mat-button color="primary" (click)="onSaveProject()">Cancel</button>
             <button mat-raised-button class="white" color="primary" (click)="onSaveProject()">Save</button>

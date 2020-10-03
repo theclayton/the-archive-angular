@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { title } from 'process';
 import { Project } from 'src/app/models/project.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -22,6 +21,8 @@ export class EditProjectContentComponent implements OnInit {
   Error: Boolean = false
   ErrorText: string = "Error saving project."
 
+  links = new FormArray([])
+
   thumbnail: string = ""
   thumbnailUpload: FormData = new FormData()
   canUploadThumbnail = false
@@ -29,6 +30,9 @@ export class EditProjectContentComponent implements OnInit {
   newTech: string = "https://flaresoftware.com/images/flaresoftware-logo.png"
   newTechUpload: FormData = new FormData()
   canUploadNewTech = false
+
+  allTechnologies = []
+  techs = new FormArray([])
 
 
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router, private projectService: ProjectService, private uploadService: UploadService, private snackBar: MatSnackBar) {
@@ -50,24 +54,31 @@ export class EditProjectContentComponent implements OnInit {
       this.router.navigate(['/'])
     }
   }
-  
+
   ngOnInit(): void {
     this.projectForm = new FormGroup({
       'title': new FormControl(null, [Validators.required]),
       'subtitle': new FormControl(null, [Validators.required]),
       'category': new FormControl(null, [Validators.required]),
-      'thumbnail': new FormControl(null, [Validators.required]),
       'dateCreated': new FormControl(new Date(), [Validators.required]),
-      'technologies': new FormControl(null, []),
       'description': new FormControl(null, [Validators.required]),
-      'links': new FormControl(null, []),
-      'images': new FormControl(null, []),
+      'allTechnologiesSelect': new FormControl(null, [Validators.required]),
     })
+
+    this.getTechList()
   }
 
   isAdmin() {
     return this.authService.getIsAdmin()
   }
+
+  async getTechList() {
+    const apiRes = await this.projectService.getUniqueTechnologies()
+    if (apiRes.message === "success") {
+      this.allTechnologies = apiRes.technologies
+    }
+  }
+
 
   updateDefaults() {
     this.projectForm.get("title").setValue(this.project.title);
@@ -80,9 +91,49 @@ export class EditProjectContentComponent implements OnInit {
     this.projectForm.get("description").setValue(this.project.description);
 
     this.thumbnail = this.project.thumbnail
-    // this.projectForm.get("technologies").setValue(this.project.title);
-    // this.projectForm.get("links").setValue(this.project.title);
+
+    // Links
+    for (let i=0; i<this.project.links.length; i++) {
+      const link = this.project.links[i];
+
+      const newGroup = new FormGroup({
+        'name': new FormControl(link.name),
+        'type': new FormControl(link.type),
+        'url': new FormControl(link.url),
+        });
+
+      this.links.push(newGroup);
+    }
+
+    // Technologies
+    for (let i=0; i<this.project.technologies.length; i++) {
+      const tech = this.project.technologies[i];
+
+      const newGroup = new FormGroup({
+        'name': new FormControl(tech.name),
+        'src': new FormControl(tech.src),
+        });
+
+      newGroup.controls['src'].disable();
+
+      this.techs.push(newGroup);
+    }
+
     // this.projectForm.get("images").setValue(this.project.title);
+  }
+
+  onAddLinkClicked() {
+    const newGroup = new FormGroup({
+      'name': new FormControl(""),
+      'type': new FormControl(""),
+      'url': new FormControl(""),
+      });
+
+    this.links.push(newGroup);
+  }
+
+  onRemoveLink(index) {
+    this.links.removeAt(index)
   }
 
   onUploadThumbnail(event) {
@@ -146,7 +197,7 @@ export class EditProjectContentComponent implements OnInit {
       description: this.projectForm.value.description,
       dateCreated: this.projectForm.value.dateCreated,
       technologies: this.project.technologies,
-      links: this.project.links,
+      links: this.links.value,
       images: this.project.images
     }
 

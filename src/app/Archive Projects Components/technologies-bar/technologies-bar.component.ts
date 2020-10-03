@@ -18,11 +18,7 @@ export class TechnologiesBarComponent implements OnInit {
   async getTechnologies() {
     let apiRes = await this.projectService.getUniqueTechnologies()
     if (apiRes.message === "success") {
-      if (apiRes.names.length === apiRes.srcs.length) {
-        for (let i=0; i<apiRes.names.length; i++) {
-          this.technologies.push({ name: apiRes.names[i], src: apiRes.srcs[i] })
-        }
-      }
+     this.technologies = apiRes.technologies
     } else {
       console.log(apiRes.message)
     }
