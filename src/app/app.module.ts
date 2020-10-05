@@ -20,6 +20,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 import { AuthInterceptor } from './auth-interceptor';
 
@@ -48,7 +51,6 @@ import { ChangePasswordComponent } from './Login Components/change-password/chan
 import { ProjectViewContentComponent } from './Archive Projects Components/projects/project-view/project-view-content/project-view-content.component';
 import { EditProjectComponent } from './Archive Projects Components/edit-project/edit-project.component';
 import { EditProjectContentComponent } from './Archive Projects Components/edit-project/edit-project-content/edit-project-content.component';
-import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -100,7 +102,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     DragDropModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule,
+    TextFieldModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,}],
   bootstrap: [AppComponent]

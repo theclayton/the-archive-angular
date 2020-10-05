@@ -34,7 +34,7 @@
 
 
             <div class="images" *ngFor="let image of project.images">
-                <img src="{{ image.src }}" alt="{{ image.name }}" height="{{ image.height }}" width="{{ image.width }}">
+                <a href="{{ image.src }}" target="_blank"><img src="{{ image.src }}" alt="{{ image.name }}" height="{{ image.height }}" width="{{ image.width }}"></a>
                 <figcaption>{{ image.caption }}</figcaption>
             </div>
 

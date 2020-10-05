@@ -27,12 +27,17 @@ export class EditProjectContentComponent implements OnInit {
   thumbnailUpload: FormData = new FormData()
   canUploadThumbnail = false
 
-  newTech: string = "https://flaresoftware.com/images/flaresoftware-logo.png"
+  newTech: string = "assets/built-in-images/upload-icon.svg"
   newTechUpload: FormData = new FormData()
   canUploadNewTech = false
-
   allTechnologies = []
   techs = new FormArray([])
+
+  newImage: string = "assets/built-in-images/upload-icon.svg"
+  allImages = []
+  images = new FormArray([])
+  newImageUpload: FormData = new FormData()
+  canUploadNewImage = false
 
 
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router, private projectService: ProjectService, private uploadService: UploadService, private snackBar: MatSnackBar) {
@@ -62,7 +67,7 @@ export class EditProjectContentComponent implements OnInit {
       'category': new FormControl(null, [Validators.required]),
       'dateCreated': new FormControl(new Date(), [Validators.required]),
       'description': new FormControl(null, [Validators.required]),
-      'allTechnologiesSelect': new FormControl(null, [Validators.required]),
+      'allTechnologiesSelect': new FormControl(null),
     })
 
     this.getTechList()
@@ -114,12 +119,23 @@ export class EditProjectContentComponent implements OnInit {
         'src': new FormControl(tech.src),
         });
 
-      newGroup.controls['src'].disable();
-
       this.techs.push(newGroup);
     }
 
-    // this.projectForm.get("images").setValue(this.project.title);
+    // Images
+    for (let i=0; i<this.project.images.length; i++) {
+      const image = this.project.images[i];
+
+      const newGroup = new FormGroup({
+        'name': new FormControl(image.name),
+        'src': new FormControl(image.src),
+        'caption': new FormControl(image.caption),
+        'height': new FormControl(image.height),
+        'width': new FormControl(image.width),
+        });
+
+      this.images.push(newGroup);
+    }  
   }
 
   onAddLinkClicked() {
@@ -151,10 +167,27 @@ export class EditProjectContentComponent implements OnInit {
       let apiRes = await this.uploadService.uploadFile(this.thumbnailUpload)
       if (apiRes.message === "success") {
         this.thumbnail = environment.apiUrl + apiRes.filename
+        this.openSnackBar(`Successfully uploaded! File src: ${this.thumbnail}`)
       } else {
-
+        this.openSnackBar("Unable to upload file.")
       }
     }
+  }
+
+
+  onChoseExistingTech(event) {
+    const newGroup = new FormGroup({
+      'name': new FormControl(event.value.name),
+      'src': new FormControl(event.value.src),
+      });
+
+    this.techs.push(newGroup);
+    console.log(this.techs.value)
+
+  }
+
+  onRemoveTech(index) {
+    this.techs.removeAt(index);
   }
 
   onUploadNewTech(event) {
@@ -169,14 +202,60 @@ export class EditProjectContentComponent implements OnInit {
       this.canUploadNewTech = false
 
       let apiRes = await this.uploadService.uploadFile(this.newTechUpload)
-      if (apiRes.message === "success") {
-        // Add photo and blank name to list
-      } else {
 
+      if (apiRes.message === "success") {
+        const newGroup = new FormGroup({
+          'name': new FormControl(""),
+          'src': new FormControl(environment.apiUrl + apiRes.filename),
+          });
+
+        this.techs.push(newGroup);
+        this.openSnackBar(`Successfully uploaded! File src: ${environment.apiUrl + apiRes.filename}`)
+
+      } else {
+          this.openSnackBar("Unable to upload file.")
       }
     }
   }
 
+
+
+  onRemoveImage(index) {
+    this.images.removeAt(index);
+  }
+
+  onUploadNewImage(event) {
+    if (event.target.files.length > 0) {
+      this.newImageUpload.append('file', event.target.files[0]);
+    }
+    this.canUploadNewImage = true
+  }
+
+  async onUploadNewImageClicked() {
+    if (this.canUploadNewImage) {
+      this.canUploadNewImage = false
+
+      let apiRes = await this.uploadService.uploadFile(this.newImageUpload)
+
+      if (apiRes.message === "success") {
+        const newGroup = new FormGroup({
+          'name': new FormControl(""),
+          'src': new FormControl(environment.apiUrl + apiRes.filename),
+          'caption': new FormControl(""),
+          'height': new FormControl(""),
+          'width': new FormControl(""),
+          });
+
+        this.images.push(newGroup);
+        this.openSnackBar(`Successfully uploaded! Image src: ${environment.apiUrl + apiRes.filename}`)
+
+      } else {
+          this.openSnackBar("Unable to upload image.")
+      }
+    }
+  }
+
+  
   async onSaveProject() {
     this.isLoading = true
 
@@ -196,9 +275,9 @@ export class EditProjectContentComponent implements OnInit {
       featured: featured,
       description: this.projectForm.value.description,
       dateCreated: this.projectForm.value.dateCreated,
-      technologies: this.project.technologies,
+      technologies: this.techs.value,
       links: this.links.value,
-      images: this.project.images
+      images: this.images.value
     }
 
     const apiRes = await this.projectService.updateProject(title, newProject);
