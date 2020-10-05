@@ -1,44 +1,47 @@
-<mat-toolbar color="primary">
-    <ul>
-        <li>
-            <a mat-button routerLink="/" *ngIf="isAuthenticated()">
+<div class="container">
+
+    <mat-toolbar color="primary">
+        <ul>
+            <li>
+                <a mat-button routerLink="/" *ngIf="isAuthenticated()">
                 The Archive
             </a>
-        </li>
-        <li>
-            <a mat-button routerLink="/" *ngIf="isAuthenticated()">
+            </li>
+            <li>
+                <a mat-button routerLink="/" *ngIf="isAuthenticated()">
                 Featured
             </a>
-        </li>
-        <li>
-            <a mat-button routerLink="/projects" *ngIf="isAuthenticated()">
+            </li>
+            <li>
+                <a mat-button routerLink="/projects" *ngIf="isAuthenticated()">
                 All Projects
             </a>
-        </li>
-    </ul>
+            </li>
+        </ul>
 
-    <span class="menu-spacer"></span>
+        <span class="menu-spacer"></span>
 
-    <ul>
-        <li>
-            <a mat-button routerLink="/projects" *ngIf="isAuthenticated()">
+        <ul>
+            <li>
+                <a mat-button routerLink="/projects" *ngIf="isAuthenticated()">
                 API
             </a>
-        </li>
-        <li>
-            <a mat-button href="https://github.com/theclayton/the-archive" target="_blank">
+            </li>
+            <li>
+                <a mat-button href="https://github.com/theclayton/the-archive" target="_blank">
                 Source
             </a>
-        </li>
-    </ul>
+            </li>
+        </ul>
 
-    <button mat-button [matMenuTriggerFor]="accountMenu">
+        <button mat-button [matMenuTriggerFor]="accountMenu">
         <mat-icon>account_circle</mat-icon>
     </button>
-    <mat-menu #accountMenu="matMenu">
-        <button mat-menu-item routerLink="/admin" [disabled]="!isAdmin()">Admin</button>
-        <button mat-menu-item routerLink="/my-account">My Account</button>
-        <button mat-menu-item (click)="onLogout()">Log Out</button>
-    </mat-menu>
+        <mat-menu #accountMenu="matMenu">
+            <button mat-menu-item routerLink="/admin" [disabled]="!isAdmin()">Admin</button>
+            <button mat-menu-item routerLink="/my-account">My Account</button>
+            <button mat-menu-item (click)="onLogout()">Log Out</button>
+        </mat-menu>
 
-</mat-toolbar>
+    </mat-toolbar>
+</div>

@@ -9,6 +9,7 @@ import { Link } from '../models/link.model';
 import { Image } from '../models/image.model';
 
 const API_URL = environment.apiUrl + "api/projects"
+const SEARCH_API_URL = environment.apiUrl + "api/search"
 
 @Injectable({ providedIn: "root" })
 
@@ -38,6 +39,19 @@ export class ProjectService {
 
     } catch (ex) {
       return { message: "Unable to get project" }
+    }
+  }
+
+
+  async getSearchResults(terms: string) {
+
+    try {
+      let res = await this.httpClient.get<{ message: string, projects: Array<any> }>(SEARCH_API_URL, { params: { terms: terms } }).toPromise()
+      let projects: Array<Project> = res.projects.map((project) => this.constructProjectObject(project))
+      return { message: res.message, projects: projects }
+
+    } catch (ex) {
+      return { message: "Unable to perform search." }
     }
   }
 
@@ -73,7 +87,7 @@ export class ProjectService {
 
   async getUniqueTechnologies() {
     try {
-      let res = await this.httpClient.get<{ message: string, names: Array<any>, srcs: Array<any> }>(API_URL + "/search/technologies").toPromise()
+      let res = await this.httpClient.get<{ message: string, names: Array<any>, srcs: Array<any> }>(API_URL + "/unique/technologies").toPromise()
 
       let technologies = []
       if (res.names.length === res.srcs.length) {

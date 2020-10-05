@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class TechnologiesBarComponent implements OnInit {
   technologies = [];
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private projectService: ProjectService, private router: Router) { }
 
   ngOnInit(): void {
     this.getTechnologies()
@@ -25,7 +26,7 @@ export class TechnologiesBarComponent implements OnInit {
   }
 
   onTechClick(tech) {
-    console.log(tech)
+    this.router.navigate([`/search`], { queryParams: { terms: tech } });
   }
 
 }

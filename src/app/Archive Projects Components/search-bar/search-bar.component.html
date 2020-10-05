@@ -1,4 +1,6 @@
 <div class="container">
-    <input type="search" placeholder="Search Projects...">
-    <button mat-raised-button class="white" color="primary" (click)="onSearchClicked()">Search</button>
+    <form class="searchField" (ngSubmit)="onSearchClicked()">
+        <input type="search" name="search" placeholder="Search Projects..." [(ngModel)]="terms">
+        <button mat-button class="white" color="accent" type="submit">Search</button>
+    </form>
 </div>

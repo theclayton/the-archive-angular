@@ -1,13 +1,15 @@
 <div class="container">
+    <app-header></app-header>
+
     <app-side-panel></app-side-panel>
 
     <div class="mainContent">
         <app-search-bar></app-search-bar>
         <app-technologies-bar></app-technologies-bar>
 
-        <app-project-preview *ngFor="let project of featuredProjects" [project]="project"></app-project-preview>
-    </div>
+        <h1>{{ resText }}</h1>
 
-    <app-header></app-header>
+        <app-project-preview *ngFor="let project of searchResults" [project]="project"></app-project-preview>
+    </div>
 
 </div>

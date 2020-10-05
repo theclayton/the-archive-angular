@@ -1,6 +1,10 @@
 .container {
-    background-color: #ebebeb;
+    background-color: #3c3c3c;
     text-align: center;
+}
+
+.searchField {
+    padding-top: 7px;
 }
 
 input {
@@ -18,8 +22,9 @@ input::-webkit-search-cancel-button {
 }
 
 input[type=search] {
-    background-color: #fefefe;
-    border: solid 1px rgb(228, 227, 227);
+    background-color: #353535;
+    border: solid 1px #757575;
+    color: #cdcdcd;
     padding: 9px 10px 9px 28px;
     margin: 5px;
     width: 55%;
@@ -34,7 +39,8 @@ input[type=search] {
 input[type=search]:focus {
     width: 65%;
     background-color: #fff;
-    border-color: #66CC75;
+    border-color: #9fcafd;
+    color: #353535;
 }
 
 input:-moz-placeholder {

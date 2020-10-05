@@ -1,5 +1,13 @@
 .mainContent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
     margin: 60px 0px 50px 275px;
+}
+
+h1 {
+    text-align: center;
+    font-weight: lighter;
 }
 
 @media (max-width: 765px) {

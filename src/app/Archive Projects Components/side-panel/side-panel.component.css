@@ -1,13 +1,17 @@
 .container {
+    position: fixed;
     width: 275px;
     height: 100%;
+    top: 60px;
     background-color: #242424;
     color: #bcbcbc
 }
 
 h4 {
     background-color: #303030;
-    padding: 10px 0px 5px 15px;
+    color: #aaaaaa;
+    padding: 8px 0px 5px 15px;
+    font-size: 10.5pt;
     margin: 0;
     font-weight: normal;
 }

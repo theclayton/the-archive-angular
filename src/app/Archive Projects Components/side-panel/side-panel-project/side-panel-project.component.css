@@ -4,8 +4,8 @@
     width: 275px;
     height: 100px;
     display: flex;
-    background-color: #222222;
-    border: 1px solid #333333;
+    background-color: #242424;
+    border: 1px solid #3f3f3f;
     -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
@@ -20,7 +20,7 @@
 
 .details {
     text-align: left;
-    color: #dedede;
+    color: #b0b0b0;
     padding-top: 15px;
 }
 

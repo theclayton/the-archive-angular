@@ -51,6 +51,7 @@ import { ChangePasswordComponent } from './Login Components/change-password/chan
 import { ProjectViewContentComponent } from './Archive Projects Components/projects/project-view/project-view-content/project-view-content.component';
 import { EditProjectComponent } from './Archive Projects Components/edit-project/edit-project.component';
 import { EditProjectContentComponent } from './Archive Projects Components/edit-project/edit-project-content/edit-project-content.component';
+import { SearchComponent } from './Archive Projects Components/search/search.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { EditProjectContentComponent } from './Archive Projects Components/edit-
     ChangePasswordComponent,
     ProjectViewContentComponent,
     EditProjectComponent,
-    EditProjectContentComponent
+    EditProjectContentComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

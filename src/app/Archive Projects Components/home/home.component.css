@@ -1,19 +1,5 @@
-.container {
-    background-color: #fff5ee;
-    display: flex;
-    flex-direction: column;
-}
-
-.flexContainer {
-    display: flex;
-    align-items: stretch;
-}
-
 .mainContent {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 50px;
+    margin: 60px 0px 50px 275px;
 }
 
 @media (max-width: 765px) {

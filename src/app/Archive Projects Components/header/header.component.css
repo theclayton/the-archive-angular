@@ -1,3 +1,13 @@
+.container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+mat-toolbar {
+    height: 60px;
+}
+
 .white {
     color: white;
 }
