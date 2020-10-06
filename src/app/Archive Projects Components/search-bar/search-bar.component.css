@@ -7,6 +7,10 @@
     padding-top: 7px;
 }
 
+.grey {
+    color: #757575;
+}
+
 input {
     outline: none;
 }
