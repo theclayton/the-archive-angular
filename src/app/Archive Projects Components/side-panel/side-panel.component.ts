@@ -17,8 +17,7 @@ export class SidePanelComponent implements OnInit {
   }
 
   async getProjectList() {
-    // TODO: REPLACE WITH MOST RECENT PROJECTS
-    let apiRes = await this.projectService.getAllProjects()
+    let apiRes = await this.projectService.getRecentProjects()
     this.projectList = apiRes.projects
     this.isLoading = false
   }

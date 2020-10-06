@@ -80,8 +80,10 @@ export class EditProjectContentComponent implements OnInit {
   async getTechList() {
     const apiRes = await this.projectService.getUniqueTechnologies()
     if (apiRes.message === "success") {
-      this.allTechnologies = apiRes.technologies
+      this.allTechnologies = apiRes.techs
     }
+    console.log(this.allTechnologies)
+
   }
 
 
@@ -153,6 +155,7 @@ export class EditProjectContentComponent implements OnInit {
   }
 
   onUploadThumbnail(event) {
+    this.thumbnailUpload = new FormData()
     if (event.target.files.length > 0) {
       this.thumbnailUpload.append('file', event.target.files[0]);
       this.thumbnail = ""
@@ -191,6 +194,7 @@ export class EditProjectContentComponent implements OnInit {
   }
 
   onUploadNewTech(event) {
+    this.newTechUpload = new FormData()
     if (event.target.files.length > 0) {
       this.newTechUpload.append('file', event.target.files[0]);
     }
@@ -225,6 +229,7 @@ export class EditProjectContentComponent implements OnInit {
   }
 
   onUploadNewImage(event) {
+    this.newImageUpload = new FormData()
     if (event.target.files.length > 0) {
       this.newImageUpload.append('file', event.target.files[0]);
     }

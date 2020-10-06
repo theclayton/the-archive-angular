@@ -1,0 +1,12 @@
+.mainContent {
+    margin: 60px 0px 50px 275px;
+}
+
+@media (max-width: 765px) {
+    app-side-panel {
+        display: none;
+    }
+    .mainContent {
+        margin: 60px 0px 50px 0px;
+    }
+}

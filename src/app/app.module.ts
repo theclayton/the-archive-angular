@@ -52,6 +52,8 @@ import { ProjectViewContentComponent } from './Archive Projects Components/proje
 import { EditProjectComponent } from './Archive Projects Components/edit-project/edit-project.component';
 import { EditProjectContentComponent } from './Archive Projects Components/edit-project/edit-project-content/edit-project-content.component';
 import { SearchComponent } from './Archive Projects Components/search/search.component';
+import { ApiRefComponent } from './Archive Projects Components/api-ref/api-ref.component';
+import { ApiRefContentComponent } from './Archive Projects Components/api-ref/api-ref-content/api-ref-content.component';
 
 
 @NgModule({
@@ -80,7 +82,9 @@ import { SearchComponent } from './Archive Projects Components/search/search.com
     ProjectViewContentComponent,
     EditProjectComponent,
     EditProjectContentComponent,
-    SearchComponent
+    SearchComponent,
+    ApiRefComponent,
+    ApiRefContentComponent
   ],
   imports: [
     BrowserModule,
