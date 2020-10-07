@@ -10,13 +10,14 @@ import { ProjectViewComponent } from './Archive Projects Components/projects/pro
 import { EditProjectComponent } from './Archive Projects Components/edit-project/edit-project.component';
 import { SearchComponent } from './Archive Projects Components/search/search.component';
 import { ApiRefComponent } from './Archive Projects Components/api-ref/api-ref.component';
+import { AllProjectsComponent } from './Archive Projects Components/projects/all-projects/all-projects.component';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'featured', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard]},
+  { path: 'projects', component: AllProjectsComponent, canActivate: [AuthGuard]},
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
   { path: 'projects/:name', component: ProjectViewComponent, canActivate: [AuthGuard]},
   { path: 'api', component: ApiRefComponent, canActivate: [AuthGuard]},

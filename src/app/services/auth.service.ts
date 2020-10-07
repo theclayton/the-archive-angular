@@ -1,12 +1,12 @@
-import { EventEmitter, Injectable, Output } from "@angular/core";
+import {Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment'
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-const BACKEND_URL = environment.apiUrl + "api/auth/login"
-
+const API_BASE_URL = environment.apiUrl + "api/auth/login"
+const USERS_API_BASE_URL = environment.apiUrl + "api/users"
 @Injectable({ providedIn: "root" })
 
 export class AuthService {
@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   getIsAdmin() {
-    if (this.user.authLevel === "admin") {
+    if (this.user.authLevel === "Admin") {
       return true
     } else {
       return false
@@ -51,7 +51,7 @@ export class AuthService {
     const loginCreds = { email: email, password: password }
 
     try {
-      let res = await this.httpClient.post<{ message: string, expiresIn: number, token: string, name: string, email: string, authLevel: string }>(BACKEND_URL, loginCreds).toPromise()
+      let res = await this.httpClient.post<{ message: string, expiresIn: number, token: string, name: string, email: string, authLevel: string }>(API_BASE_URL, loginCreds).toPromise()
 
       if (res.message === "success") {
         const today = new Date()
@@ -81,7 +81,7 @@ export class AuthService {
     const emailPassword = { email: this.user.email, password: password }
 
     try {
-      let res = await this.httpClient.put<{ message: string }>(BACKEND_URL, emailPassword).toPromise()
+      let res = await this.httpClient.put<{ message: string }>(USERS_API_BASE_URL + "/change-password", emailPassword).toPromise()
 
       if (res.message === "success") {
         return { success: true, message: "Success! Password updated successfully." }
@@ -93,8 +93,7 @@ export class AuthService {
 
   private async getUserInfo() {
     try {
-      const params: string = "/getinfo"
-      let res = await this.httpClient.post<{ message: string, name: string, authLevel: string }>(BACKEND_URL + params, { token: this.token }).toPromise()
+      let res = await this.httpClient.post<{ message: string, name: string, authLevel: string }>(API_BASE_URL + "/getinfo", { token: this.token }).toPromise()
 
       if (res.message === "success") {
         this.user.name = res.name

@@ -1,0 +1,16 @@
+<div class="container">
+    <app-search-bar></app-search-bar>
+    <app-technologies-bar></app-technologies-bar>
+
+    <div class="sortBar">
+        <h5>Sort by:</h5>
+        <button mat-button color="primary" (click)="onNameFilter()">Name</button>
+        <button mat-button color="primary" (click)="onCategoryFilter()">Category</button>
+        <button mat-button color="primary" (click)="onDateFilter()">Date Developed</button>
+    </div>
+
+    <app-project-preview-small *ngFor="let project of projects" [project]="project"></app-project-preview-small>
+    <!-- <app-project-preview-small *ngFor="let project of projects; trackBy: trackProject" [project]="project"></app-project-preview-small> -->
+
+    <app-header></app-header>
+</div>

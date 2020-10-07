@@ -45,6 +45,7 @@ export class ChangePasswordComponent implements OnInit {
       if (updatePassword.success) {
         this.openSnackBar(updatePassword.message)
         this.ErrorText = updatePassword.message
+        this.isLoading = false
       } else {
         this.ErrorText = updatePassword.message
         this.Error = true

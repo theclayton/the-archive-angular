@@ -1,0 +1,16 @@
+<div class="container">
+    <mat-card (click)="onViewClicked()">
+        <div class="content">
+            <div class="leftSide" [ngStyle]="{'background-image': getImageUrl()}">
+            </div>
+            <div class="rightSide">
+                <h2>{{ project.title }}</h2>
+                <img *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="20" height="20" matTooltip="{{ tech.name }}">
+            </div>
+            <div class="rightSide">
+                <p>Category: <strong>{{ project.category }}.</strong></p>
+                <p> Developed: {{ project.dateCreated | date }}.</p>
+            </div>
+        </div>
+    </mat-card>
+</div>

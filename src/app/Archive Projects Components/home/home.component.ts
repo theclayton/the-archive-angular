@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
@@ -22,6 +21,4 @@ export class HomeComponent implements OnInit {
     this.featuredProjects = apiRes.projects
     this.isLoading = false
   }
-
-
 }

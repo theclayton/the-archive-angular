@@ -8,7 +8,7 @@ import { Technology } from '../models/technology.model';
 import { Link } from '../models/link.model';
 import { Image } from '../models/image.model';
 
-const API_URL = environment.apiUrl + "api/projects"
+const API_BASE_URL = environment.apiUrl + "api/projects"
 const SEARCH_API_URL = environment.apiUrl + "api/search"
 
 @Injectable({ providedIn: "root" })
@@ -19,7 +19,7 @@ export class ProjectService {
 
   async getAllProjects() {
     try {
-      let res = await this.httpClient.get<{ message: string, projects: Array<any> }>(API_URL).toPromise()
+      let res = await this.httpClient.get<{ message: string, projects: Array<any> }>(API_BASE_URL).toPromise()
 
       let projects: Array<Project> = res.projects.map((project) => this.constructProjectObject(project))
       return { message: res.message, projects: projects }
@@ -33,7 +33,7 @@ export class ProjectService {
     let name = encodeURI(projectName);
 
     try {
-      let res = await this.httpClient.get<{ message: string, project: any }>(`${API_URL}/${name}`).toPromise()
+      let res = await this.httpClient.get<{ message: string, project: any }>(`${API_BASE_URL}/${name}`).toPromise()
       let project: Project = this.constructProjectObject(res.project)
       return { message: res.message, project: project }
 
@@ -59,7 +59,7 @@ export class ProjectService {
     const title = { title: projectTitle }
 
     try {
-      let res = await this.httpClient.post<{ message: string, project: any }>(API_URL + "/create", title).toPromise()
+      let res = await this.httpClient.post<{ message: string, project: any }>(API_BASE_URL + "/create", title).toPromise()
       const project: Project = this.constructProjectObject(res.project)
 
       return { message: res.message, project: project }
@@ -74,7 +74,7 @@ export class ProjectService {
     const reqBody = { title: title, project: project }
 
     try {
-      let res = await this.httpClient.put<{ message: string, project: any }>(API_URL, reqBody).toPromise()
+      let res = await this.httpClient.put<{ message: string, project: any }>(API_BASE_URL, reqBody).toPromise()
       const project: Project = this.constructProjectObject(res.project)
 
       return { message: res.message, project: project }
@@ -87,7 +87,7 @@ export class ProjectService {
 
   async getUniqueTechnologies() {
     try {
-      let res = await this.httpClient.get<{ message: string, techs: Array<any>}>(API_URL + "/unique/technologies").toPromise()
+      let res = await this.httpClient.get<{ message: string, techs: Array<any>}>(API_BASE_URL + "/unique/technologies").toPromise()
 
       return { message: res.message, techs: res.techs }
 
@@ -99,7 +99,7 @@ export class ProjectService {
 
   async getRecentProjects() {
     try {
-      let res = await this.httpClient.get<{ message: string, projects: Array<any>}>(API_URL + "/recent/projects").toPromise()
+      let res = await this.httpClient.get<{ message: string, projects: Array<any>}>(API_BASE_URL + "/recent/projects").toPromise()
 
       return { message: res.message, projects: res.projects }
 
@@ -112,7 +112,7 @@ export class ProjectService {
 
   async getFeaturedProjects(type: string) {
     try {
-      let res = await this.httpClient.get<{ message: string, projects: Array<any> }>(API_URL + "/featured/" + type).toPromise()
+      let res = await this.httpClient.get<{ message: string, projects: Array<any> }>(API_BASE_URL + "/featured/" + type).toPromise()
 
       let projects: Array<Project> = res.projects.map((project) => this.constructProjectObject(project))
       return { message: res.message, projects: projects }
@@ -125,7 +125,7 @@ export class ProjectService {
 
   async updateFeaturedProjects(type: string, featuredProjects: Array<{ title: string }>) {
     try {
-      let res = await this.httpClient.post<{ message: string }>(API_URL + "/featured/" + type, featuredProjects).toPromise()
+      let res = await this.httpClient.post<{ message: string }>(API_BASE_URL + "/featured/" + type, featuredProjects).toPromise()
 
       return { message: res.message }
 
@@ -137,7 +137,7 @@ export class ProjectService {
 
   async deleteProject(title: string) {
     try {
-      let res = await this.httpClient.delete<{ message: string }>(API_URL + "/delete/" + encodeURI(title)).toPromise()
+      let res = await this.httpClient.delete<{ message: string }>(API_BASE_URL + "/delete/" + encodeURI(title)).toPromise()
       console.log(res)
       return { message: res.message }
 

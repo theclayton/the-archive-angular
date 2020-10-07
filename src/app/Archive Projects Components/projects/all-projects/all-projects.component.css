@@ -1,0 +1,9 @@
+.container {
+    margin: 60px 0px 50px 0px;
+}
+
+.sortBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

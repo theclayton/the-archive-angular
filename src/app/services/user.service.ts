@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
 import { User } from '../models/user.model';
 
-const BACKEND_URL = environment.apiUrl + "api/users"
+const API_BASE_URL = environment.apiUrl + "api/users"
 
 @Injectable({ providedIn: "root" })
 
@@ -13,7 +13,7 @@ export class UserService {
 
   async getAllUsers() {
     try {
-        let res = await this.httpClient.get<{ message: string, users: Array<any> }>(BACKEND_URL).toPromise()
+        let res = await this.httpClient.get<{ message: string, users: Array<any> }>(API_BASE_URL).toPromise()
         let users: Array<User> = res.users.map((user) => this.constructUserObject(user))
         return { message: res.message, users: users }
 
@@ -26,7 +26,7 @@ export class UserService {
     const userCreds = { name: name, email: email, password: password, authLevel: authLevel }
 
     try {
-      let res = await this.httpClient.post<{ message: string, user: any }>(BACKEND_URL + "/create", userCreds).toPromise()
+      let res = await this.httpClient.post<{ message: string, user: any }>(API_BASE_URL + "/create", userCreds).toPromise()
 
       if (res.message === "success") {
         return { success: true, message: "Success! User was successfully created." }
@@ -40,7 +40,7 @@ export class UserService {
     const userCreds = { name: name, email: email, authLevel: authLevel }
 
     try {
-      let res = await this.httpClient.post<{ message: string }>(BACKEND_URL + "/modify", userCreds).toPromise()
+      let res = await this.httpClient.post<{ message: string }>(API_BASE_URL + "/modify", userCreds).toPromise()
 
       if (res.message === "success") {
         return { success: true, message: "Success! User was successfully modified." }
@@ -54,7 +54,7 @@ export class UserService {
     const userEmail = { email: email }
 
     try {
-      let res = await this.httpClient.post<{ message: string }>(BACKEND_URL + "/delete", userEmail).toPromise()
+      let res = await this.httpClient.post<{ message: string }>(API_BASE_URL + "/delete", userEmail).toPromise()
 
       if (res.message === "success") {
         return { success: true, message: "Success! User was successfully deleted." }

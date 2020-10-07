@@ -10,7 +10,7 @@ export class UserListComponent implements OnInit {
   users = [];
   isLoading: Boolean = true
   displayedColumns: string[] = [ 'name', 'email', 'access' ];
-
+  selectedUser: string = ""
 
   constructor(public userService: UserService) {}
 
@@ -26,7 +26,15 @@ export class UserListComponent implements OnInit {
   }
 
   onEditUser(user) {
-    console.log(user)
+    this.selectedUser = user.email
+  }
+
+  onDeleteClick() {
+    if (confirm("Are you sure you wnat to delete " + this.selectedUser)) {
+      // TODO: DELETE
+    } else {
+      
+    }
   }
 
 }
