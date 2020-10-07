@@ -9,10 +9,10 @@ import { UserService } from 'src/app/services/user.service';
 export class UserListComponent implements OnInit {
   users = [];
   isLoading: Boolean = true
-  displayedColumns: string[] = [ 'name', 'email', 'access' ];
+  displayedColumns: string[] = ['name', 'email', 'access'];
   selectedUser: string = ""
 
-  constructor(public userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.getAllUsers()
@@ -29,11 +29,14 @@ export class UserListComponent implements OnInit {
     this.selectedUser = user.email
   }
 
-  onDeleteClick() {
+  async onDeleteClick() {
     if (confirm("Are you sure you wnat to delete " + this.selectedUser)) {
       // TODO: DELETE
+      let apiRes = await this.userService.deleteUser(this.selectedUser)
+      console.log(apiRes.message)
+
     } else {
-      
+
     }
   }
 

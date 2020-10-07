@@ -13,12 +13,12 @@ export class UserService {
 
   async getAllUsers() {
     try {
-        let res = await this.httpClient.get<{ message: string, users: Array<any> }>(API_BASE_URL).toPromise()
-        let users: Array<User> = res.users.map((user) => this.constructUserObject(user))
-        return { message: res.message, users: users }
+      let res = await this.httpClient.get<{ message: string, users: Array<any> }>(API_BASE_URL).toPromise()
+      let users: Array<User> = res.users.map((user) => this.constructUserObject(user))
+      return { message: res.message, users: users }
 
     } catch (ex) {
-        return { success: false, message: ex.error.message }
+      return { success: false, message: ex.error.message }
     }
   }
 
@@ -64,14 +64,12 @@ export class UserService {
     }
   }
 
-
   constructUserObject(user) {
     return {
-        name: user.name,
-        email: user.email,
-        authLevel: user.authLevel
-        }
+      name: user.name,
+      email: user.email,
+      authLevel: user.authLevel
     }
-
+  }
 
 }
