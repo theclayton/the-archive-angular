@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:3000/",
-  crypto_key: "asdf"
+  apiUrl: "http://localhost:3000/"
 };
 
 /*

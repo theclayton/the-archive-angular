@@ -1,3 +1,12 @@
 .container {
     margin: 15px;
 }
+
+.grey {
+    color: #7d7d7d;
+    font-weight: normal;
+}
+
+.endpoint {
+    border-bottom: 1px dashed #858585;
+}

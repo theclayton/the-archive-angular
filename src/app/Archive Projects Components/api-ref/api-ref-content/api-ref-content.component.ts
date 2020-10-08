@@ -20,4 +20,19 @@ export class ApiRefContentComponent implements OnInit {
     this.apiData = apiRes
   }
 
+  getMethodColor(endpoint) {
+    let color = 'yellow'
+
+    if (endpoint.method === 'GET') {
+      color = '#85a392'
+    } else if (endpoint.method === 'POST') {
+      color = '#f5b971'
+    } else if (endpoint.method === 'PUT') {
+      color = '#87a8d0'
+    } else if (endpoint.method === 'DELETE') {
+      color = '#d8345f'
+    }
+    return color
+  }
+
 }

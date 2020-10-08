@@ -124,7 +124,7 @@
             {
                 "summary": "Delete user account",
                 "method": "DELETE",
-                "endpoint": "/users",
+                "endpoint": "/users/:email",
                 "description": "Result is a JSON object containing a message. A success message indicates that the user was successfully updated from req.body JSON data. Authentication and admin access are required."
             }
         ]

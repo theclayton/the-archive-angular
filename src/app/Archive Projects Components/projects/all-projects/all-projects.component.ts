@@ -24,7 +24,7 @@ export class AllProjectsComponent implements OnInit {
   }
 
   onNameFilter() {
-    this.projects = this.projects.sort((a, b) => b.title < a.title ? -1 : a.title > b.title ? 1 : 0).slice()
+    this.projects = this.projects.sort((a, b) => b.title > a.title ? -1 : a.title < b.title ? 1 : 0).slice()
   }
 
   onCategoryFilter() {

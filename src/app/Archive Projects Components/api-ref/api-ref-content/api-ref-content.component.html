@@ -10,9 +10,8 @@
             <hr>
             <div class="endpoint" *ngFor="let endpoint of api.endpoints">
                 <h5>{{ endpoint.summary }}</h5>
-                <p><strong>{{ endpoint.method }}</strong> {{ endpoint.endpoint }}</p>
-                <h5>{{ endpoint.description }}</h5>
-                <hr>
+                <p><strong [endpoint]="endpoint" [style.color]="getMethodColor(endpoint)">{{ endpoint.method }}</strong> {{ endpoint.endpoint }}</p>
+                <h5 class="grey">{{ endpoint.description }}</h5>
             </div>
         </div>
     </mat-card>
