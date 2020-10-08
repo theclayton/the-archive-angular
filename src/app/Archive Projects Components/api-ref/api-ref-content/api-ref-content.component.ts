@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { APIService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-api-ref-content',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./api-ref-content.component.css']
 })
 export class ApiRefContentComponent implements OnInit {
+  apiData: any = []
 
-  constructor() { }
+  constructor(private apiService: APIService) { }
 
   ngOnInit(): void {
+    this.getAPIData()
+  }
+
+  async getAPIData() {
+    let apiRes = await this.apiService.getAPIData()
+    this.apiData = apiRes
   }
 
 }

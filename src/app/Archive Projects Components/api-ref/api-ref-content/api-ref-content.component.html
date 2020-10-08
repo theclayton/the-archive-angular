@@ -4,14 +4,14 @@
         <h4>Base URL:</h4>
         <p>https://resume.flaresoftware.com/api/</p>
 
-        <div class="apiSection">
-            <h2>Projects</h2>
-            <p>Description</p>
+        <div class="apiSection" *ngFor="let api of apiData">
+            <h2>{{ api.sectionName }}</h2>
+            <p>{{ api.sectionDescription }}</p>
             <hr>
-            <div class="endpoint">
-                <h5>List all projects</h5>
-                <p><strong>GET</strong> /projects</p>
-                <h5>Gets a list of all projects directly from database in JSON format: message: string, projects: Array any</h5>
+            <div class="endpoint" *ngFor="let endpoint of api.endpoints">
+                <h5>{{ endpoint.summary }}</h5>
+                <p><strong>{{ endpoint.method }}</strong> {{ endpoint.endpoint }}</p>
+                <h5>{{ endpoint.description }}</h5>
                 <hr>
             </div>
         </div>

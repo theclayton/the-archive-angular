@@ -26,7 +26,7 @@ export class UserService {
     const userCreds = { name: name, email: email, password: password, authLevel: authLevel }
 
     try {
-      let res = await this.httpClient.post<{ message: string, user: any }>(API_BASE_URL + "/create", userCreds).toPromise()
+      let res = await this.httpClient.post<{ message: string }>(API_BASE_URL + "/create", userCreds).toPromise()
 
       if (res.message === "success") {
         return { success: true, message: "Success! User was successfully created." }

@@ -11,7 +11,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-
   cUserFormTitle: String = "Create a New User"
   cUserForm: FormGroup;
   isLoading: Boolean = false
@@ -28,6 +27,8 @@ export class CreateUserComponent implements OnInit {
   }
 
   async onCreateUser() {
+    this.isLoading = true
+
     let name: string = this.cUserForm.value.name
     let email: string = this.cUserForm.value.email
     let password: string = this.cUserForm.value.password
@@ -39,6 +40,7 @@ export class CreateUserComponent implements OnInit {
 
     let apiRes = await this.userService.createUser(name, email, password, authLevel)
     this.openSnackBar(apiRes.message)
+    this.isLoading = false
   }
 
   checkboxChanged() {

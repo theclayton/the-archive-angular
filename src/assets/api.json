@@ -1,0 +1,23 @@
+[{
+    "sectionName": "projects",
+    "sectionDescription": "It is possible to create, modify, and delete projects. Featured projects are displayed based on the selection made by an admin user. The top ten most recent projects appear on the side bar to the left.",
+    "endpoints": [{
+            "summary": "Lists all projects",
+            "method": "GET",
+            "endpoint": "/projects",
+            "description": "Result is an array of JSON objects containing all data for all projects found in database. Authentication is required via JWT."
+        },
+        {
+            "summary": "Gets info for one project",
+            "method": "GET",
+            "endpoint": "/projects/:name",
+            "description": "Result is a JSON object containing all project information. Authentication is required via JWT."
+        },
+        {
+            "summary": "Creates a blank project",
+            "method": "GET",
+            "endpoint": "/projects/create",
+            "description": "Result is a JSON object containing the project title from req.body and all other project information is set to null. Authentication is required via JWT."
+        }
+    ]
+}]
