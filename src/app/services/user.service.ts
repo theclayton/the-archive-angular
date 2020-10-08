@@ -51,10 +51,8 @@ export class UserService {
   }
 
   async deleteUser(email: string) {
-    const userEmail = { email: email }
-
     try {
-      let res = await this.httpClient.post<{ message: string }>(API_BASE_URL + "/delete", userEmail).toPromise()
+      let res = await this.httpClient.delete<{ message: string }>(`${API_BASE_URL}/${email}`).toPromise()
 
       if (res.message === "success") {
         return { success: true, message: "Success! User was successfully deleted." }

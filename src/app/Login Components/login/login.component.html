@@ -21,7 +21,7 @@
 
 
                 <button mat-raised-button class="white" color="primary" [disabled]="isLoading" (click)="onLogin()"><mat-spinner *ngIf="isLoading" diameter="20" class="seashell-spinner"></mat-spinner>Login</button>
-                <button mat-button color="primary" (click)="onCreateAccount()">Create an account</button>
+                <!-- <button mat-button color="primary" (click)="onCreateAccount()">Create an account</button> -->
                 <p *ngIf="loginError" class="helpBlock">{{ loginErrorText }}</p>
             </form>
         </mat-card>

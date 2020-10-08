@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class UserListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'email', 'access'];
   selectedUser: string = ""
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getAllUsers()
@@ -30,14 +31,17 @@ export class UserListComponent implements OnInit {
   }
 
   async onDeleteClick() {
-    if (confirm("Are you sure you wnat to delete " + this.selectedUser)) {
-      // TODO: DELETE
+    if (confirm("Are you sure you want to delete " + this.selectedUser)) {
+      this.isLoading = true
       let apiRes = await this.userService.deleteUser(this.selectedUser)
-      console.log(apiRes.message)
-
-    } else {
-
+      this.openSnackBar(apiRes.message)
+      this.isLoading = false
     }
   }
 
+  openSnackBar(message: string) {
+    this.snackBar.open(message, "Dismiss", {
+      duration: 5000,
+    });
+  }
 }
