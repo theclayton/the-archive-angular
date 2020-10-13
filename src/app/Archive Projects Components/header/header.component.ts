@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   isAuthenticated() {
-    return this.authService.isAuth
+    return this.authService.isAuth()
   }
 
   isAdmin() {

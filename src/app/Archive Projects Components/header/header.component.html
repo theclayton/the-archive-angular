@@ -3,17 +3,17 @@
     <mat-toolbar color="primary">
         <ul>
             <li>
-                <a mat-button routerLink="/" *ngIf="isAuthenticated()">
+                <a mat-button routerLink="/">
                     <img src="/assets/built-in-images/archive-white.png" alt="The Archive" height="26">
                 </a>
             </li>
             <li>
-                <a mat-button routerLink="/" *ngIf="isAuthenticated()">
+                <a mat-button routerLink="/">
                 Featured
             </a>
             </li>
             <li>
-                <a mat-button routerLink="/projects" *ngIf="isAuthenticated()">
+                <a mat-button routerLink="/projects">
                 All Projects
             </a>
             </li>
@@ -23,7 +23,7 @@
 
         <ul>
             <li>
-                <a mat-button routerLink="/api" *ngIf="isAuthenticated()">
+                <a mat-button routerLink="/api">
                 API
             </a>
             </li>
@@ -38,8 +38,9 @@
         <mat-icon>account_circle</mat-icon>
     </button>
         <mat-menu #accountMenu="matMenu">
+            <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated()">Login</button>
             <button mat-menu-item routerLink="/admin" [disabled]="!isAdmin()">Admin</button>
-            <button mat-menu-item routerLink="/my-account">My Account</button>
+            <button mat-menu-item routerLink="/my-account" [disabled]="!isAuthenticated()">My Account</button>
             <button mat-menu-item (click)="onLogout()">Log Out</button>
         </mat-menu>
 
