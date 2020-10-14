@@ -2,6 +2,13 @@
     width: 100%;
     background-color: #272727;
     display: flex;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 h5 {

@@ -35,8 +35,11 @@
 
 
             <div class="images" *ngFor="let image of project.images">
-                <a href="{{ image.src }}" target="_blank"><img src="{{ image.src }}" alt="{{ image.name }}" height="{{ image.height }}" width="{{ image.width }}"></a>
+                <a class="imageContainer" href="{{ image.src }}" target="_blank">
+                    <img src="{{ image.src }}" alt="{{ image.name }}" height="{{ image.height }}" width="{{ image.width }}">
+                </a>
                 <figcaption>{{ image.caption }}</figcaption>
+
             </div>
 
         </div>

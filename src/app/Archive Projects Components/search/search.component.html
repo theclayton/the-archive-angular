@@ -1,6 +1,4 @@
 <div class="container">
-    <app-header></app-header>
-
     <app-side-panel></app-side-panel>
 
     <div class="mainContent">
@@ -12,4 +10,5 @@
         <app-project-preview *ngFor="let project of searchResults" [project]="project"></app-project-preview>
     </div>
 
+    <app-header></app-header>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-api-ref-content',
@@ -8,7 +9,8 @@ import { APIService } from 'src/app/services/api.service';
 })
 export class ApiRefContentComponent implements OnInit {
   apiData: any = []
-
+  baseURL: string = environment.apiUrl + "api"
+  
   constructor(private apiService: APIService) { }
 
   ngOnInit(): void {

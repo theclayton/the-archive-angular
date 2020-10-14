@@ -15,13 +15,19 @@
 .image img {
     border: solid 1px #111111;
     border-radius: 50%;
-    margin: 20px 12px 0px 12px;
+    margin: 16px 12px 0px 12px;
 }
 
 .details {
     text-align: left;
-    color: #b0b0b0;
-    padding-top: 15px;
+    color: #d4d4d4;
+    padding-top: 16px;
+    opacity: 0.75;
+    transition: 0.15s;
+}
+
+.details:hover {
+    opacity: 1.0;
 }
 
 p {
@@ -34,8 +40,8 @@ p {
 }
 
 .projTitle {
-    font-size: 10pt;
-    padding-bottom: 1px;
+    font-size: 11pt;
+    padding-bottom: 2px;
 }
 
 .date {
@@ -54,4 +60,5 @@ p {
 
 .details img {
     margin-right: 5px;
+    filter: grayscale(100%);
 }

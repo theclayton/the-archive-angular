@@ -5,13 +5,13 @@
                 "summary": "List all projects",
                 "method": "GET",
                 "endpoint": "/projects",
-                "description": "Result is an array of JSON objects containing all data for all projects found in database. Authentication is required via JWT."
+                "description": "Result is an array of JSON objects containing all data for all projects found in database."
             },
             {
                 "summary": "Get info for one project",
                 "method": "GET",
                 "endpoint": "/projects/:name",
-                "description": "Result is a JSON object containing all project information. Authentication is required via JWT."
+                "description": "Result is a JSON object containing all project information."
             },
             {
                 "summary": "Create a blank project",
@@ -35,13 +35,13 @@
                 "summary": "Get 10 most recent projects",
                 "method": "GET",
                 "endpoint": "/projects/recent/projects",
-                "description": "Result is a JSON object containing all project information for 10 most recent projects by date of development. Authentication is required via JWT."
+                "description": "Result is a JSON object containing all project information for 8 most recent projects by date of development."
             },
             {
                 "summary": "Get featured projects",
                 "method": "GET",
                 "endpoint": "/projects/featured/:type",
-                "description": "Result is a JSON object containing all project information for projects which featured field is set to the given parameter. Authentication is required via JWT."
+                "description": "Result is a JSON object containing all project information for projects which featured field is set to the given parameter."
             },
             {
                 "summary": "Create featured project list",
@@ -53,7 +53,7 @@
                 "summary": "Get unique technologies",
                 "method": "GET",
                 "endpoint": "/projects/unique/technologies",
-                "description": "Result is a JSON object containing all the unique technologies found from all projects in database. Authentication is required via JWT."
+                "description": "Result is a JSON object containing all the unique technologies found from all projects in database."
             }
         ]
     },
@@ -81,7 +81,7 @@
             "summary": "Search all projects",
             "method": "Get",
             "endpoint": "/search?terms=query",
-            "description": "Result is an array of JSON objects containing projects that match query parameter. No authentication is required."
+            "description": "Result is an array of JSON objects containing projects that match query parameter."
         }]
     },
     {

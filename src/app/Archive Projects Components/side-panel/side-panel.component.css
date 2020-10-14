@@ -2,9 +2,19 @@
     position: fixed;
     width: 275px;
     height: 100%;
-    top: 60px;
     background-color: #242424;
-    color: #bcbcbc
+    color: #bcbcbc;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+h1 {
+    color: #242424;
 }
 
 h4 {

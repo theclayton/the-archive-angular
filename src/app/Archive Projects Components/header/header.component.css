@@ -6,6 +6,8 @@
 
 mat-toolbar {
     height: 60px;
+    background-color: rgba(63, 81, 181, 0.97);
+    color: white;
 }
 
 .white {
@@ -31,4 +33,27 @@ a {
 
 .menu-spacer {
     flex: 1 1 auto;
+}
+
+.mobileMenu {
+    background-color: #222222;
+}
+
+.mobile {
+    display: none;
+}
+
+.mobile .mat-icon {
+    position: absolute;
+    top: -25px;
+    font-size: 35px;
+}
+
+@media (max-width: 550px) {
+    .mainMenu {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
 }

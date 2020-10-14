@@ -1,18 +1,18 @@
 <div class="container">
 
-    <mat-toolbar color="primary">
+    <mat-toolbar>
         <ul>
             <li>
                 <a mat-button routerLink="/">
                     <img src="/assets/built-in-images/archive-white.png" alt="The Archive" height="26">
                 </a>
             </li>
-            <li>
+            <li class="mainMenu">
                 <a mat-button routerLink="/">
                 Featured
             </a>
             </li>
-            <li>
+            <li class="mainMenu">
                 <a mat-button routerLink="/projects">
                 All Projects
             </a>
@@ -22,27 +22,43 @@
         <span class="menu-spacer"></span>
 
         <ul>
-            <li>
+            <li class="mainMenu">
                 <a mat-button routerLink="/api">
                 API
             </a>
             </li>
-            <li>
+            <li class="mainMenu">
                 <a mat-button href="https://github.com/theclayton/the-archive" target="_blank">
                 Source
             </a>
             </li>
         </ul>
 
-        <button mat-button [matMenuTriggerFor]="accountMenu">
-        <mat-icon>account_circle</mat-icon>
-    </button>
-        <mat-menu #accountMenu="matMenu">
+        <button mat-button [matMenuTriggerFor]="accountMenu" class="mainMenu">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #accountMenu="matMenu" class="mainMenu">
             <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated()">Login</button>
             <button mat-menu-item routerLink="/admin" [disabled]="!isAdmin()">Admin</button>
             <button mat-menu-item routerLink="/my-account" [disabled]="!isAuthenticated()">My Account</button>
-            <button mat-menu-item (click)="onLogout()">Log Out</button>
+            <button mat-menu-item (click)="onLogout()" *ngIf="isAuthenticated()">Log Out</button>
         </mat-menu>
+
+
+        <div class="mobile">
+            <button mat-button [matMenuTriggerFor]="mobileMenu">
+                <mat-icon>list</mat-icon>
+            </button>
+            <mat-menu #mobileMenu="matMenu" class="mobileMenu">
+                <button mat-menu-item routerLink="/">Featured</button>
+                <button mat-menu-item routerLink="/projects">All projects</button>
+
+                <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated()">Login</button>
+                <button mat-menu-item routerLink="/admin" [disabled]="!isAdmin()">Admin</button>
+                <button mat-menu-item routerLink="/my-account" [disabled]="!isAuthenticated()">My Account</button>
+                <button mat-menu-item (click)="onLogout()" *ngIf="isAuthenticated()">Log Out</button>
+            </mat-menu>
+        </div>
 
     </mat-toolbar>
 </div>
