@@ -19,6 +19,7 @@ export class AllProjectsComponent implements OnInit {
 
   async getProjectList() {
     let apiRes = await this.projectService.getAllProjects()
+    apiRes.projects = this.projects.sort((a, b) => b.dateCreated < a.dateCreated ? -1 : a.dateCreated > b.dateCreated ? 1 : 0)
     this.projects = apiRes.projects
     this.isLoading = false
   }

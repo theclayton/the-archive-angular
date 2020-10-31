@@ -9,13 +9,13 @@
             </li>
             <li class="mainMenu">
                 <a mat-button routerLink="/">
-                Featured
-            </a>
+                    Featured
+                </a>
             </li>
             <li class="mainMenu">
                 <a mat-button routerLink="/projects">
-                All Projects
-            </a>
+                    All Projects
+                </a>
             </li>
         </ul>
 
@@ -24,13 +24,13 @@
         <ul>
             <li class="mainMenu">
                 <a mat-button routerLink="/api">
-                API
-            </a>
+                    API
+                </a>
             </li>
             <li class="mainMenu">
                 <a mat-button href="https://github.com/theclayton/the-archive" target="_blank">
-                Source
-            </a>
+                    Source
+                </a>
             </li>
         </ul>
 
@@ -52,6 +52,7 @@
             <mat-menu #mobileMenu="matMenu" class="mobileMenu">
                 <button mat-menu-item routerLink="/">Featured</button>
                 <button mat-menu-item routerLink="/projects">All projects</button>
+                <button mat-menu-item routerLink="/api">API Ref</button>
 
                 <button mat-menu-item routerLink="/login" *ngIf="!isAuthenticated()">Login</button>
                 <button mat-menu-item routerLink="/admin" [disabled]="!isAdmin()">Admin</button>
