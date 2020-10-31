@@ -3,9 +3,10 @@
         <div class="content">
             <div class="leftSide" [ngStyle]="{'background-image': getImageUrl()}">
             </div>
-            <div class="rightSide">
+            <div class="rightSide mLeftRight">
                 <h2>{{ project.title }}</h2>
-                <img *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="20" height="20" matTooltip="{{ tech.name }}">
+                <img *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="20" height="20"
+                    matTooltip="{{ tech.name }}">
             </div>
             <div class="rightSide">
                 <p>Category: <strong>{{ project.category }}.</strong></p>

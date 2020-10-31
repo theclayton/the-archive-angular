@@ -55,7 +55,10 @@ img {
         display: none;
     }
     .rightSide {
-        max-width: 100%;
         border-left: none;
+        max-width: 100%;
+    }
+    .mLeftRight {
+        width: 60%;
     }
 }
