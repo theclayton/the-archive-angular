@@ -79,7 +79,7 @@
         "sectionDescription": "How search queries for projects are handled.",
         "endpoints": [{
             "summary": "Search all projects",
-            "method": "Get",
+            "method": "GET",
             "endpoint": "/search?terms=query",
             "description": "Result is an array of JSON objects containing projects that match query parameter."
         }]

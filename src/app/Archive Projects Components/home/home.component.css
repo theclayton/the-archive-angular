@@ -16,13 +16,15 @@ h4 {
 
 h2 {
     padding-top: 55px;
-    font-size: 40pt;
+    font-size: 45pt;
     font-weight: lighter;
+    color: #222222;
 }
 
 h1 {
     padding: 15px 5px 30px 5px;
     font-size: 35pt;
+    color: #333333;
 }
 
 @media (max-width: 765px) {
