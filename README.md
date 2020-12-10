@@ -1,27 +1,9 @@
-# TheArchive
+#WELCOME
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
+##The Archive By Clayton Ward
 
-## Development server
+Hello! Thank you for browsing The Archive. I am Clayton Ward, the developer of this site. I have years of software development experience and decided to create this site as a place to display all of my projects.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This site was developed with Angular using TypeScript, HTML and CSS. The back-end is a RESTful API I built, running Express and MongoDB. Feel free to explore the API with the link towards the top right of this page. The front-end of this site is stored on one of my GoDaddy Apache servers, which I also use for my freelance work and company Flare Software LC. The back-end is a Google Cloud Platform Debian Linux instance running NodeJS along with MongoDB. File uploads are also stored on the same instance for simplicity and speed.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+I published this site for the very first time on October 8, 2020. Feel free to browse my projects, by scrolling through the list of All Projects. Or by searching for projects or technologies and languages used. Also don't miss the featured projects on the home page.
