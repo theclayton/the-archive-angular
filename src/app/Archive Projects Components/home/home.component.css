@@ -1,37 +1,38 @@
 .mainContent {
-    margin: 60px 0px 50px 275px;
+  margin: 60px 0px 50px 275px;
+  padding-bottom: 75px;
 }
 
 h1,
 h2,
 h4 {
-    text-align: center;
-    padding: 0;
-    margin: 0;
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 h4 {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 h2 {
-    padding-top: 55px;
-    font-size: 45pt;
-    font-weight: lighter;
-    color: #222222;
+  padding-top: 55px;
+  font-size: 45pt;
+  font-weight: lighter;
+  color: #222222;
 }
 
 h1 {
-    padding: 15px 5px 30px 5px;
-    font-size: 35pt;
-    color: #333333;
+  padding: 15px 5px 30px 5px;
+  font-size: 35pt;
+  color: #333333;
 }
 
 @media (max-width: 765px) {
-    app-side-panel {
-        display: none;
-    }
-    .mainContent {
-        margin: 60px 0px 50px 0px;
-    }
+  app-side-panel {
+    display: none;
+  }
+  .mainContent {
+    margin: 60px 0px 50px 0px;
+  }
 }
