@@ -67,6 +67,7 @@ export class EditProjectContentComponent implements OnInit {
       'category': new FormControl(null, [Validators.required]),
       'dateCreated': new FormControl(new Date(), [Validators.required]),
       'description': new FormControl(null, [Validators.required]),
+      'thumbnail': new FormControl(null),
       'allTechnologiesSelect': new FormControl(null),
     })
 
@@ -96,6 +97,7 @@ export class EditProjectContentComponent implements OnInit {
     }
     this.projectForm.get("dateCreated").setValue(this.project.dateCreated);
     this.projectForm.get("description").setValue(this.project.description);
+    this.projectForm.get("thumbnail").setValue(this.project.thumbnail);
 
     this.thumbnail = this.project.thumbnail
 
@@ -170,6 +172,7 @@ export class EditProjectContentComponent implements OnInit {
       let apiRes = await this.uploadService.uploadFile(this.thumbnailUpload)
       if (apiRes.message === "success") {
         this.thumbnail = environment.apiUrl + apiRes.filename
+        this.projectForm.get("thumbnail").setValue(this.thumbnail);
         this.openSnackBar(`Successfully uploaded! File src: ${this.thumbnail}`)
       } else {
         this.openSnackBar("Unable to upload file.")
@@ -276,7 +279,7 @@ export class EditProjectContentComponent implements OnInit {
       title: this.projectForm.value.title,
       subtitle: this.projectForm.value.subtitle,
       category: this.projectForm.value.category,
-      thumbnail: this.thumbnail,
+      thumbnail: this.projectForm.value.thumbnail,
       featured: featured,
       description: this.projectForm.value.description,
       dateCreated: this.projectForm.value.dateCreated,

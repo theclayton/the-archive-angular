@@ -9,11 +9,13 @@
                 <h5 class="right">Featured: {{ project.featured }}</h5>
             </div>
 
-            <h1>{{ project.title }}</h1>
-            <h2>{{ project.subtitle }}</h2>
-            <h5>{{ project.dateCreated | date }}</h5>
+            <div class="titleAndThumbnail">
+                <img src="{{ project.thumbnail }}" alt="thumbnail" height="60" width="60" />
+                <h1>{{ project.title }}</h1>
+            </div>
 
-            <hr>
+            <h2>{{ project.subtitle }}</h2>
+            <h5 class="border-bottom">{{ project.dateCreated | date }}</h5>
 
 
             <div class="links">

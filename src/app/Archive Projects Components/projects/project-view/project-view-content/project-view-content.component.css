@@ -1,78 +1,95 @@
 .container {
-    padding: 15px;
+  padding: 15px;
+}
+
+.titleAndThumbnail {
+  display: flex;
+  align-items: center;
+  padding: 25px 0px 2px 0px;
+}
+
+.titleAndThumbnail img {
+  border: solid 1px #111111;
+  border-radius: 50%;
+  margin: 0px 8px 0px 0px;
 }
 
 h2 {
-    padding: 0px 0px 8px 0px;
-    margin: 0;
-    font-weight: lighter;
+  padding: 0px 0px 8px 0px;
+  margin: 0;
+  font-weight: lighter;
 }
 
 h5 {
-    padding: 0px 8px 0px 0px;
-    margin: 0;
+  padding: 0px 8px 0px 0px;
+  margin: 0;
 }
 
 p {
-    padding: 8px 0px 0px 0px;
-    margin: 0;
-    white-space: pre-wrap;
+  padding: 8px 0px 0px 0px;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.border-bottom {
+  padding-bottom: 25px;
+  border-bottom: 1px dashed #777777;
 }
 
 .right {
-    text-align: right;
+  text-align: right;
 }
 
 .heading {
-    display: flex;
+  display: flex;
 }
 
 .heading h5 {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .technology {
-    display: inline-block;
-    padding: 10px 0px;
+  display: inline-block;
+  padding: 7px 0px;
 }
 
 .technology img {
-    padding: 8px 8px 0px 0px;
+  padding: 8px 8px 0px 0px;
 }
 
 .links {
-    display: inline-block;
-    padding: 10px 0px 20px 0px;
+  display: inline-block;
+  padding: 10px 0px 20px 0px;
 }
 
 .links a {
-    padding: 0px 12px 0px 0px;
+  padding: 0px 12px 0px 0px;
 }
 
 .small-bottom-spacer {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .description {
-    padding: 20px 0px 35px 0px;
+  padding: 20px 0px 35px 0px;
 }
 
 .images {
-    padding: 12px;
-    text-align: center;
+  padding: 12px;
+  text-align: center;
 }
 
 .imageContainer a {
-    margin: 0 auto;
-    width: 100%;
-    text-decoration: none;
+  margin: 0 auto;
+  width: 100%;
+  text-decoration: none;
 }
 
 .images figcaption {
-    text-align: center;
+  text-align: center;
 }
 
 .images img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }

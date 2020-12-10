@@ -42,9 +42,13 @@
             <h2>Upload a thumbnail</h2>
             <div class="thumbnail">
                 <img src="{{ thumbnail }}" alt="thumbnail" height="60" width="60">
-                <input type="file" name="file" (change)="onUploadThumbnail($event)" class="uploadFile" />
+                <input class="thumbnailInput" type="file" name="file" (change)="onUploadThumbnail($event)" class="uploadFile" />
                 <button mat-raised-button color="primary" (click)="onUploadThumbnailClicked()">Upload</button>
                 <p>(60px x 60px)</p>
+
+                <mat-form-field>
+                    <input matInput type="text" formControlName="thumbnail" placeholder="SRC">
+                </mat-form-field>
             </div>
 
 
