@@ -1,6 +1,4 @@
-#WELCOME
-
-##The Archive By Clayton Ward
+## The Archive By Clayton Ward
 
 Hello! Thank you for browsing The Archive. I am Clayton Ward, the developer of this site. I have years of software development experience and decided to create this site as a place to display all of my projects.
 
