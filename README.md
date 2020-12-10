@@ -1,6 +1,6 @@
 ## The Archive By Clayton Ward
 
-[Go to Backend repository](https://github.com/theclayton/the-archive-backend)
+[Go to backend repository](https://github.com/theclayton/the-archive-backend)
  
 Hello! Thank you for browsing The Archive. I am Clayton Ward, the developer of this site. I have years of software development experience and decided to create this site as a place to display all of my projects.
 
