@@ -1,6 +1,6 @@
 <div class="container">
     <h5>Technologies: </h5>
     <button *ngFor="let tech of technologies" (click)="onTechClick(tech.name)">
-        <img src="{{ tech.src }}" alt="{{ tech.name }}" height="22" width="22" matTooltip="{{ tech.name }}">
+        <img src="{{ tech.src }}" alt="{{ tech.name }}" height="19" width="19" matTooltip="{{ tech.name }}">
     </button>
 </div>

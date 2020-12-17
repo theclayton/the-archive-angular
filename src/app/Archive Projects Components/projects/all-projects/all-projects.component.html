@@ -9,6 +9,7 @@
         <button mat-button color="primary" (click)="onDateFilter()">Date Developed</button>
     </div>
 
+    <mat-spinner *ngIf="isLoading" diameter="40" class="seashell-spinner center"></mat-spinner>
     <app-project-preview-small *ngFor="let project of projects" [project]="project"></app-project-preview-small>
 
     <app-header></app-header>

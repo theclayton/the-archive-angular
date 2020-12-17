@@ -10,7 +10,8 @@ import { environment } from 'src/environments/environment';
 export class ApiRefContentComponent implements OnInit {
   apiData: any = []
   baseURL: string = environment.apiUrl + "api"
-  
+  isLoading: boolean = false
+
   constructor(private apiService: APIService) { }
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class ApiRefContentComponent implements OnInit {
   async getAPIData() {
     let apiRes = await this.apiService.getAPIData()
     this.apiData = apiRes
+    this.isLoading = false
   }
 
   getMethodColor(endpoint) {

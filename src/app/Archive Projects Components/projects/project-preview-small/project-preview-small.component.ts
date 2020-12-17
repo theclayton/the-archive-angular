@@ -14,10 +14,6 @@ export class ProjectPreviewSmallComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getImageUrl() {
-    return `url('${this.project.images[0].src}')`;
-  }
-
   onViewClicked() {
     this.router.navigate([`projects/${this.project.title}`], { state: { project: this.project }});
   }

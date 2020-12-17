@@ -85,8 +85,11 @@ p {
   text-decoration: none;
 }
 
-.images figcaption {
+.caption {
   text-align: center;
+  color: #333333;
+  font-weight: lighter;
+  padding: 5px;
 }
 
 .images img {

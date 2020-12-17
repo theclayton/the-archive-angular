@@ -4,6 +4,8 @@
         <h4>Base URL:</h4>
         <p>{{ baseURL }}</p>
 
+        <mat-spinner *ngIf="isLoading" diameter="40" class="seashell-spinner center"></mat-spinner>
+
         <div class="apiSection" *ngFor="let api of apiData">
             <h2>{{ api.sectionName }}</h2>
             <p>{{ api.sectionDescription }}</p>

@@ -23,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 import { AuthInterceptor } from './auth-interceptor';
 
@@ -88,7 +89,7 @@ import { AllProjectsComponent } from './Archive Projects Components/projects/all
     ApiRefComponent,
     ApiRefContentComponent,
     ProjectPreviewSmallComponent,
-    AllProjectsComponent
+    AllProjectsComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,7 +115,8 @@ import { AllProjectsComponent } from './Archive Projects Components/projects/all
     MatNativeDateModule,
     MatTooltipModule,
     MatSelectModule,
-    TextFieldModule
+    TextFieldModule,
+    IvyCarouselModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,}],
   bootstrap: [AppComponent]

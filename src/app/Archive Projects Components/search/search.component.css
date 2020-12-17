@@ -10,6 +10,11 @@ h1 {
     font-weight: lighter;
 }
 
+.center {
+    margin: 30px auto;
+  }
+  
+
 @media (max-width: 765px) {
     app-side-panel {
         display: none;

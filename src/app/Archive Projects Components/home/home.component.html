@@ -6,7 +6,8 @@
         <app-technologies-bar></app-technologies-bar>
         <h2>Welcome to The Archive!</h2>
         <h4>By Clayton Ward</h4>
-        <h1>Featured Projects</h1>
+        <h1>Featured Projects:</h1>
+        <mat-spinner *ngIf="isLoading" diameter="40" class="seashell-spinner center"></mat-spinner>
 
         <app-project-preview *ngFor="let project of featuredProjects" [project]="project"></app-project-preview>
     </div>

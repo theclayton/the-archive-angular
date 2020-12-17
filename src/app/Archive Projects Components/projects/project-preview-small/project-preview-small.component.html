@@ -1,16 +1,17 @@
 <div class="container">
     <mat-card (click)="onViewClicked()">
-        <div class="content">
-            <div class="leftSide" [ngStyle]="{'background-image': getImageUrl()}">
-            </div>
-            <div class="rightSide mLeftRight">
-                <h2>{{ project.title }}</h2>
-                <img *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="20" height="20"
-                    matTooltip="{{ tech.name }}">
+        <div class="content flex">
+            <div class="leftSide flex">
+                <div class="flex titleIcon">
+                    <img class="thumbnail" src='{{ project.thumbnail }}' height="40" width="40" />
+                    <h2>{{ project.title }}</h2>
+                </div>
+                <h4>{{ project.subtitle }}</h4>
             </div>
             <div class="rightSide">
                 <p>Category: <strong>{{ project.category }}.</strong></p>
                 <p> Developed: {{ project.dateCreated | date }}.</p>
+                <img class="techImg" *ngFor="let tech of project.technologies" [src]="tech.src" alt=" " width="17" height="17" matTooltip="{{ tech.name }}">
             </div>
         </div>
     </mat-card>

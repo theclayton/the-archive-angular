@@ -2,6 +2,8 @@
     <button mat-button color="primary" (click)="onBackClick()">Go Back</button>
     <button mat-button color="primary" *ngIf="isAdmin()" (click)="onEditProject()">Edit</button>
     <mat-card>
+        <mat-spinner *ngIf="isLoading" diameter="40" class="seashell-spinner center"></mat-spinner>
+
         <div class="content" *ngIf="!isLoading">
 
             <div class="heading">
@@ -36,13 +38,12 @@
             </div>
 
 
-            <div class="images" *ngFor="let image of project.images">
-                <a class="imageContainer" href="{{ image.src }}" target="_blank">
-                    <img src="{{ image.src }}" alt="{{ image.name }}" height="{{ image.height }}" width="{{ image.width }}">
-                </a>
-                <figcaption>{{ image.caption }}</figcaption>
-
-            </div>
+            <carousel height='400' dots='true' loop='true' cellWidth='100%' >
+                <div class="carousel-cell" *ngFor="let image of project.images">
+                    <figcaption class='caption'>{{ image.caption }}</figcaption>
+                    <img src="{{ image.src }}">
+                </div>
+            </carousel>
 
         </div>
     </mat-card>
