@@ -38,12 +38,17 @@
             </div>
 
 
-            <carousel height='400' dots='true' loop='true' cellWidth='100%' >
+            <!-- <carousel *ngIf='images.length > 0' height='400' dots='true' loop='true' cellWidth='100%'>
                 <div class="carousel-cell" *ngFor="let image of project.images">
                     <figcaption class='caption'>{{ image.caption }}</figcaption>
-                    <img src="{{ image.src }}">
+                    <img [src]="image.src">
                 </div>
-            </carousel>
+            </carousel> -->
+
+            <div class="images" *ngFor="let image of project.images">
+                <img src="{{ image.src }}" height="{{ image.height }}" width="{{ image.width }}" />
+                <figcaption class="caption">{{ image.caption }}</figcaption>
+            </div>
 
         </div>
     </mat-card>

@@ -13,12 +13,15 @@ import { Location } from '@angular/common';
 export class ProjectViewContentComponent implements OnInit {
   project: Project
   isLoading: boolean = true
+  images = []
 
   constructor(private activatedRoute: ActivatedRoute, private location: Location, private router: Router, private projectService: ProjectService, private authService: AuthService) {
     try {
       this.project = this.router.getCurrentNavigation().extras.state.project;
       window.scrollTo(0, 0)
       this.isLoading = false
+      this.processImages()
+
     } catch {
       // pass
     }
@@ -30,6 +33,7 @@ export class ProjectViewContentComponent implements OnInit {
       this.project = res.project
       window.scrollTo(0, 0)
       this.isLoading = false
+      this.processImages()
     } else {
       this.router.navigate([''])
     }
@@ -43,6 +47,14 @@ export class ProjectViewContentComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
         this.getProjectDatafromAPI(params['name'])
     })
+  }
+
+  processImages() {
+    for (const image of this.project.images) {
+      let item = {path: image.src}
+      this.images.push(item)
+    }
+    console.log(this.images)
   }
 
   isAdmin() {
